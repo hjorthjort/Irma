@@ -3,6 +3,8 @@
     <head>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.css">
+        <!-- Import jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <title>Irma: Friendly and fast tech support</title>
     </head>
     <neck></neck>
@@ -12,8 +14,26 @@
             <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
             <p><a class="btn btn-primary btn-lg">Learn more</a></p>
         </div>
-        <div class="text-muted">index.html</div>
-        <h1>h1</h1>
-        </p>
+        <section id="errands_section">
+            <div class="container">
+                <div id="errands_list" class="row">
+
+                </div>
+            </div>
+        </section>
+        <script>
+
+            addErrand("New errand",null,null,null);
+
+            function addErrand(title, description, soundfile, tags) {
+                var newErrand = document.createElement("div");
+                newErrand.className = "col-lg-4";
+                var textNode = document.createElement("p");
+                textNode.innerHTML = "AKADKHG";
+                newErrand.appendChild(textNode);
+                $("#errands_list").append(newErrand);
+            }
+        </script>
     </body>
 </html>
+
