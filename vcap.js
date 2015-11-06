@@ -6,3 +6,6 @@ var VCAP_SERVICES = JSON.parse(fs.readFileSync('./vcap_services.json', {
 var VCAP_APPLICATION = JSON.parse(fs.readFileSync('./vcap_application.json', {
     encoding: 'utf8'
 }));
+
+exports.VCAP_SERVICES = VCAP_SERVICES;
+exports.VCAP_APPLICATION = VCAP_APPLICATION;
