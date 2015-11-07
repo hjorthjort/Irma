@@ -10,7 +10,8 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
         description: description,
         tags: tags,
         phone_number: phone_number,
-        timestamp: timestamp
+        timestamp: timestamp,
+        completed: false
     }, function (err, body) {
         if (err) {
             return callback(err);
@@ -40,22 +41,40 @@ exports.getAll = function (callback) {
             return callback(err);
         }
 
-        callback(null, result);
+        var filteredResult = result.rows.filter(function (errand) {
+            if (errand.doc.completed === true) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        console.log(filteredResult);
+
+        callback(null, filteredResult);
     });
 };
 
-exports.destroy = function (id, rev, callback) {
-    errands.destroy(id, rev, function (err, result) {
+exports.complete = function (id, callback) {
+    errands.get(id, function (err, body) {
         if (err) {
             return callback(err);
         }
 
-        callback(null, result);
+        body.completed = true;
+
+        errands.insert(body, function (err, body) {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(null, body);
+        });
     });
 };
 
 exports.getRecording = function(id){
-    return errands.attachment.get(id, 'recording.wav')
-}
+    return errands.attachment.get(id, 'recording.wav');
+};
 
 module.exports = exports;
