@@ -1,10 +1,10 @@
 var exports = {};
 
 var db = require('./db');
-var supporters = db.use('supporters');
+var experts = db.use('experts');
 
 exports.add = function (params, callback) {
-    supporters.insert(params, function (err, body) {
+    experts.insert(params, function (err, body) {
         if (err) {
             return callback(err);
         }
@@ -14,7 +14,7 @@ exports.add = function (params, callback) {
 };
 
 exports.getAll = function (callback) {
-    supporters.list({include_docs: true}, function (err, result) {
+    experts.list({include_docs: true}, function (err, result) {
         if (err) {
             callback(err);
         }

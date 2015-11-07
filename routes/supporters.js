@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var supporters = require('../modules/supporters');
+var experts = require('../modules/experts');
 
 router.get('/', function(req, res, next) {
-    supporters.getAll(function (err, result) {
+    experts.getAll(function (err, result) {
         if (err) {
             return res.status(500).json(err);
         }
@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
         fb_access_token: fb_access_token
     };
 
-    supporters.add(params, function (err, result) {
+    experts.add(params, function (err, result) {
         if (err) {
             return res.status(500).json(err);
         }
