@@ -37,7 +37,7 @@ exports.get = function (id, callback) {
 exports.getAll = function (callback) {
     errands.list({include_docs: true}, function (err, result) {
         if (err) {
-            callback(err);
+            return callback(err);
         }
 
         callback(null, result);
