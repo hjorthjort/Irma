@@ -56,7 +56,7 @@
                             <div class="col-lg-8 col-lg-offset-2">
                                 <p class="jumbotron-text">Find people who need you. Heed the call. Get rewarded.</p>
                                 <p class="jumbotron-text">Read about all open support request below. When you see one that you feel you can help with, click the button and you will get a phone number to call. You will be rewarded based on time spent and results.</p>
-                                <p><a href="#errands_section" class="btn-flatly btn-flatly-primary btn-flatly-lg page-scroll">Learn more</a></p>
+                                <p><a href="#errands_section" class="btn-flatly btn-flatly-primary btn-flatly-lg page-scroll" id="learnmore">Learn more</a></p>
                             </div>
                         </div>
                     </div>
@@ -74,8 +74,19 @@
             </div>
         </section>
         <script>
+            var errands = $.get("http://localhost:6001/errands", {}, function (errands, string, jqXHR) {
+                console.info("Got stuff from db");
+                console.info(errands);
+                var errandOne = errands.rows[0];
+
+                console.info(errandOne);
+                addErrand(errandOne.doc.description, errandOne.doc._attachments["recording.wav"], errandOne.doc.tags, errandOne.doc.phone_number)
+
+            });
+
+
             var description = "Lorem ipsum dolor sit amet, cu sit probo eirmod mnesarchum, at viris similique pri. Mei quaerendum theophrastus te. Duo ne ferri volumus adipisci. Te per meis solum alterum. Quo patrioque deterruisset an.";
-            var soundfile = 'files/id001.mp3';
+            var soundfile = {content_type: "audio/wav", revpos: 2, digest: "md5-sPYAKuTEONMv8rwE9+yaLA==", length: 87724, stub: true}
             var tags = ['monitor', 'wifi', 'crying', 'super powers', 'explorer', 'arch linux' ];
             var phone = "0763 16 22 40"
 
@@ -173,9 +184,11 @@
                 //Display the audio with controls
                 cardSoundfile.setAttribute("controls", "controls");
                 var source = document.createElement("source");
-                source.setAttribute("src", soundfile);
+                source.setAttribute("src", soundfile["digest"]);
                 source.setAttribute("type", "audio/mpeg");
                 source.setAttribute("preload", "metadata");
+                console.info(soundfile);
+                console.info(source);
                 cardSoundfile.appendChild(source);
                 cardSoundfileDiv.appendChild(cardSoundfile);
 
