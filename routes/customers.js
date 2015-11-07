@@ -14,11 +14,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    var fb_access_token = req.body.fb_access_token;
+    var name = req.body.name;
+    var age = req.body.age;
     var phone_number = req.body.phone_number;
 
     var params = {
-        fb_access_token: fb_access_token,
+        name: name,
+        age: age,
         phone_number: phone_number
     };
 
