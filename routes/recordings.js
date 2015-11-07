@@ -14,6 +14,14 @@ Array.prototype.last = function(){
     return this[this.length - 1];
 };
 
+function createFolderIfDoesNotExist(folder) {
+    try {
+        fs.accessSync(folder, fs.F_OK);
+    } catch (err) {
+        fs.mkdirSync(folder);
+    }
+}
+
 router.post('/', function(req, res, next) {
     // get post parameters
     var from = req.body.from;
@@ -22,14 +30,12 @@ router.post('/', function(req, res, next) {
 
     // build path to save recording to
     var filename = recordingUrl.split('/').last();
-    var recordingsDirectory = __dirname + '/../resources/recordings/';
+    var resourcesDirectory = __dirname + '/../resources/';
+    var recordingsDirectory = resourcesDirectory + 'recordings/';
     var pathToFile = recordingsDirectory + filename;
 
-    try {
-        fs.accessSync(recordingsDirectory, fs.F_OK);
-    } catch (err) {
-        fs.mkdirSync(recordingsDirectory);
-    }
+    createFolderIfDoesNotExist(resourcesDirectory);
+    createFolderIfDoesNotExist(recordingsDirectory);
 
     // get recording from server and write it to our file system
     var stream = request.get(recordingUrl).auth(username, password, false).pipe(fs.createWriteStream(pathToFile));
