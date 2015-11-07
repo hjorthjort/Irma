@@ -6,6 +6,7 @@ var fs = require('fs');
 
 var errands = require('../modules/errands');
 var watson = require('../modules/watson');
+var alchemy = require('../modules/alchemy');
 
 var username = 'u1ca6e5211881ab295783eb6e96ed3e0f';
 var password = '69FD184896F143C0F95F5B76FE347DDE';
@@ -59,8 +60,8 @@ router.post('/', function(req, res, next) {
                 return res.status(500).json(err);
             }
 
-            // analyze text with Watson to get relevant key words
-            watson.concept_insights(transcript, function (err, concepts) {
+            // analyze text with alchemy to get relevant key words			
+			alchemy.get_tags(transcript, function (err, keywords) {
                 if (err) {
                     cleanup(pathToRecording);
                     console.log(err);
@@ -68,7 +69,7 @@ router.post('/', function(req, res, next) {
                 }
 
                 // finally, save the errand with all the data
-                errands.add(pathToRecording, transcript, concepts, from, created, function (err, result) {
+                errands.add(pathToRecording, transcript, keywords, from, created, function (err, result) {
                     cleanup(pathToRecording);
 
                     if (err) {

@@ -11,6 +11,7 @@ var errands = require('./routes/errands');
 var recordings = require('./routes/recordings');
 var customers = require('./routes/customers');
 var experts = require('./routes/experts');
+var alchemy = require('./routes/alchemy');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/errands', errands);
 app.use('/recordings', recordings);
 app.use('/customers', customers);
 app.use('/experts', experts);
+app.use('/alchemy', alchemy);
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
