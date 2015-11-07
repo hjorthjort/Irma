@@ -44,4 +44,14 @@ exports.getAll = function (callback) {
     });
 };
 
+exports.delete = function (id, rev, callback) {
+    errands.destroy(id, rev, function (err, result) {
+        if (err) {
+            return callback(err);
+        }
+
+        callback(null, result);
+    });
+};
+
 module.exports = exports;
