@@ -37,14 +37,16 @@
     <div class="nav-wrapper container">
         <ul class="left hide-on-med-and-down">
             <li><a href="/"><i class="mdi-action-home"></i></a></li>
+            <li><a href="errands.html">All errands</a></li>
         </ul>
 
         <ul class="right hide-on-med-and-down">
-            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="profile.html"><i class="medium material-icons">perm_identity</i></a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a href="/"><i class="mdi-action-home "></i></a></li>
+            <li><a href="/"><i class="mdi-action-home"></i></a></li>
+            <li><a href="errands.html">All errands</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -160,6 +162,8 @@
             $(this).closest('.card').addClass('teal lighten-4');
             $(this).css('color', 'black');
             $(this).css('cursor', 'default');
+
+            $(this).closest('.card-action').prepend('<p class="left" style="margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>');
 
             $(this).prepend('<i class="mdi-communication-phone"></i> ');
 

@@ -60,8 +60,8 @@ router.post('/', function(req, res, next) {
                 return res.status(500).json(err);
             }
 
-            // analyze text with alchemy to get relevant key words			
-			alchemy.get_tags(transcript, function (err, keywords) {
+            // analyze text to get relevant key words			
+			getTags(transcript, function (err, keywords) {
                 if (err) {
                     cleanup(pathToRecording);
                     console.log(err);
@@ -83,5 +83,24 @@ router.post('/', function(req, res, next) {
         });
     });
 });
+
+function getTags(transcript, callback) {
+	
+    // analyze text with alchemy to get relevant key words			
+	alchemy.get_tags(transcript, function (err, keywords) {
+		if(err) {
+			watson.concept_insights(transcript, function(err, result) {
+				if(err) {
+					return callback(err);
+				}
+				
+				callback(null, result);
+			});
+			return;
+		}
+		
+		callback(null, keywords);
+	});
+}
 
 module.exports = router;
