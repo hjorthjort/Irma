@@ -74,9 +74,25 @@
             </div>
         </section>
         <script>
-            var errands = $.get("http://localhost:6001/errands", {}, function(errands) {
+
+            var users = [
+                {name: "Rikard", age: 24},
+                {name: "Elsa", age: 72},
+                {name: "Robert", age:59},
+                {name: "Martin", age: 48},
+                {name: "Jessica", age: 34},
+                {name: "Rosemarie", age: 81},
+                {name: "Stan", age: 75},
+                {name: "Adam", age: 44},
+                {name: "Eva", age: 59}
+            ];
+            var i = 0;
+            var errands = $.get("/errands", {}, function(errands) {
                 errands.rows.map(function(errand){
-                    addErrand(errand.doc.description, errand.id, errand.doc.tags, errand.doc.phone_number)
+                    var index = i % users.length;
+                    var title = users[index].name + ", " + users[index].age;
+                    addErrand(title, errand.doc.description, errand.id, errand.doc.tags, errand.doc.phone_number);
+                    i++;
                 });
             });
 
@@ -97,7 +113,7 @@
             addErrand(description, soundfile, tags, phone);*/
 
 
-            function addErrand(description, id, tags, phone) {
+            function addErrand(title, description, id, tags, phone) {
                 //Create table element, so we fit two cards on every row
                 var newErrand = document.createElement("div");
                 newErrand.classList.add("col-lg-6");
@@ -118,7 +134,7 @@
                 cardTitleDiv.classList.add("row");
                 var cardTitle = document.createElement("span");
                 cardTitle.classList.add("card-title", "col-lg-12");
-                cardTitle.innerHTML = "Task";
+                cardTitle.innerHTML = title;
                 cardTitleDiv.appendChild(cardTitle);
 
                 var cardTagsDiv = document.createElement("div");
