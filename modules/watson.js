@@ -15,9 +15,9 @@ var concept_insights = watson.concept_insights({
     version: 'v2'
 });
 
-exports.speech_to_text = function (file, callback) {
+exports.speech_to_text = function (filename, callback) {
     var params = {
-        audio: fs.createReadStream(file),
+        audio: fs.createReadStream(filename),
         content_type: 'audio/wav',
         inactivity_timeout: -1
     };
