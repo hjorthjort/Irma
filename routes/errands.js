@@ -13,6 +13,10 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/:id/recording.wav', function(req, res, next) {
+    errands.getRecording(req.params.id).pipe(res);
+});
+
 router.post('/', function(req, res, next) {
     var recording = req.body.recording;
     var description = req.body.description;

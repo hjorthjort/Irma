@@ -34,4 +34,8 @@ exports.getAll = function (callback) {
     });
 };
 
+exports.getRecording = function(id){
+    return errands.attachment.get(id, 'recording.wav')
+}
+
 module.exports = exports;
