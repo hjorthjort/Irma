@@ -20,7 +20,8 @@ exports.speech_to_text = function (filename, callback) {
         audio: fs.createReadStream(filename),
         content_type: 'audio/wav',
         inactivity_timeout: -1,
-        continuous: true
+        continuous: true,
+        model: 'en-US_NarrowbandModel'
     };
 
     speech_to_text.recognize(params, function(err, result) {
