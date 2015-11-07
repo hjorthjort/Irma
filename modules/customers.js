@@ -13,6 +13,12 @@ exports.add = function (params, callback) {
     });
 };
 
+exports.getByPhoneNumber = function(phnNumber, callback) {
+	exports.getAll(function(err, result) {
+		console.log(result);
+	});
+};
+
 exports.getAll = function (callback) {
     customers.list({include_docs: true}, function (err, result) {
         if (err) {
