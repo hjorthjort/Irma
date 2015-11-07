@@ -166,7 +166,7 @@
           </div>
         </form>
 
-        <form class="col s4 offset-s2">
+        <form class="col s4 offset-s2" id="experts">
           <div class="row">
             <div class="col s12">
               <h5>Expert</h5>
@@ -175,19 +175,19 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_name" type="text" class="validate">
+              <input id="expert_name" name="expert_name" type="text" class="validate">
               <label for="expert_name">Name</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_email" type="email" class="validate">
+              <input id="expert_email" name="expert_email" type="email" class="validate">
               <label for="expert_email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_password" type="password" class="validate">
+              <input id="expert_password" name="expert_password" type="password" class="validate">
               <label for="expert_password">Password</label>
             </div>
           </div>
@@ -256,6 +256,14 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <script>
+      $('#experts').submit(function(evt){
+        evt.preventDefault();
+        console.log($(this).serialize());
+        $.post("/experts", $(this).serialize());
+      })
+    </script>
 
   </body>
 </html>
