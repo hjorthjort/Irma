@@ -19,7 +19,8 @@ exports.speech_to_text = function (filename, callback) {
     var params = {
         audio: fs.createReadStream(filename),
         content_type: 'audio/wav',
-        inactivity_timeout: -1
+        inactivity_timeout: -1,
+        continuous: true
     };
 
     speech_to_text.recognize(params, function(err, result) {
@@ -27,7 +28,12 @@ exports.speech_to_text = function (filename, callback) {
             return callback(err);
         }
 
-        callback(null, result);
+        var results = result.results;
+        var transcript = results.map(function (result) {
+            return result.alternatives[0].transcript;
+        }).join("").trim();
+
+        callback(null, transcript);
     });
 };
 
@@ -42,7 +48,14 @@ exports.concept_insights = function (text, callback) {
             return callback(err);
         }
 
-        callback(null, result);
+        console.log(result);
+
+        var annotations = result.annotations;
+        var concepts = annotations.map(function (annotation) {
+            return annotation.concept.label;
+        });
+
+        callback(null, concepts);
     });
 };
 
