@@ -15,8 +15,18 @@ exports.add = function (params, callback) {
 
 exports.getByPhoneNumber = function(phnNumber, callback) {
 	exports.getAll(function(err, result) {
-		console.log(result);
-		callback(null, result);
+		if(err) {
+			callback(err);
+		}
+		
+		var user = result.rows.reduce(function (list, row) {
+			if(row.doc.phone_number == phnNumber) {
+				list.push(row.doc);
+			}
+			return list;
+		}, []);
+		
+		callback(null, user);
 	});
 };
 

@@ -14,8 +14,18 @@ function validateKlarnaToken(token){
     return true;
 }
 
+router.get('/:phoneNumber', function(req, res, next) {
+    customers.getByPhoneNumber(req.params.phoneNumber, function (err, result) {
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
 router.get('/', function(req, res, next) {
-    customers.getByPhoneNumber('0738956449', function (err, result) {
+    customers.getAll(function (err, result) {
         if (err) {
             return res.status(500).json(err);
         }
@@ -39,7 +49,7 @@ router.post('/', function(req, res, next) {
         !validator.isEmail(email) ||
         !validator.isLength(name, 1) ||
         !validator.isInt(age) ||
-        !validator.isMobilePhone(phone_number) ||
+        !validator.isLength(phone_number, 10) ||
         !validateKlarnaToken(klarna_token)
     ){
         return res.status(500).json({
@@ -47,7 +57,7 @@ router.post('/', function(req, res, next) {
             'email': validator.isEmail(email),
             'name': validator.isLength(name, 1),
             'age': validator.isInt(age),
-            'phone': validator.isMobilePhone(phone_number),
+            'phone': validator.isLength(phone_number, 10),
             'klarna_token': validateKlarnaToken(klarna_token)
         });
     }
