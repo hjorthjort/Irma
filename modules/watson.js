@@ -9,6 +9,12 @@ var speech_to_text = watson.speech_to_text({
     version: 'v1'
 });
 
+var concept_insights = watson.concept_insights({
+    username: '7d143c29-a8af-4b24-989e-592a44a34067',
+    password: 'FdbFkUZRQfRE',
+    version: 'v2'
+});
+
 exports.speech_to_text = function (file, callback) {
     var params = {
         audio: fs.createReadStream(file),
@@ -16,12 +22,27 @@ exports.speech_to_text = function (file, callback) {
         inactivity_timeout: -1
     };
 
-    speech_to_text.recognize(params, function(err, transcript) {
+    speech_to_text.recognize(params, function(err, result) {
         if (err) {
             return callback(err);
         }
 
-        callback(null, transcript);
+        callback(null, result);
+    });
+};
+
+exports.concept_insights = function (text, callback) {
+    var params = {
+        graph: '/graphs/wikipedia/en-latest',
+        text: text
+    };
+
+    concept_insights.graphs.annotateText(params, function(err, result) {
+        if (err) {
+            return callback(err);
+        }
+
+        callback(null, result);
     });
 };
 
