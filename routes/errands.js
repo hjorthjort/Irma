@@ -45,7 +45,13 @@ router.delete('/:id', function (req, res, next) {
         }
 
         var rev = result._rev;
-        res.json(rev);
+        errands.destroy(id, rev, function (err, result) {
+            if (err) {
+                return res.status(500).json(err);
+            }
+
+            res.json(result);
+        });
     });
 });
 
