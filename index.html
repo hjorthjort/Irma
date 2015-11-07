@@ -22,15 +22,66 @@
             </div>
         </section>
         <script>
+            var description = "Lorem ipsum dolor sit amet, cu sit probo eirmod mnesarchum, at viris similique pri. Mei quaerendum theophrastus te. Duo ne ferri volumus adipisci. Te per meis solum alterum. Quo patrioque deterruisset an.";
+            var soundfile = 'files/id001.mp3';
+            var tags = ['monitor', 'wifi', 'crying', 'super powers', 'explorer', 'arch linux' ];
+            var phone = "0763 16 22 40"
 
-            addErrand("New errand",null,null,null);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
 
-            function addErrand(title, description, soundfile, tags) {
+            function addErrand(description, soundfile, tags, phone) {
+                //Create table element
                 var newErrand = document.createElement("div");
-                newErrand.className = "col-lg-4";
-                var textNode = document.createElement("p");
-                textNode.innerHTML = "AKADKHG";
-                newErrand.appendChild(textNode);
+                newErrand.classList.add("col-lg-6");
+
+                //Create panel
+                var panel = document.createElement("div");
+                panel.classList.add("panel-primary");
+
+                var panelHeading = document.createElement("div");
+                panelHeading.classList.add("panel-heading")
+
+                //create panel heading
+                var panelTitle = document.createElement("h3");
+                panelTitle.classList.add("panel-title");
+                //add all tags, comma separated
+                tags.forEach(function (element, index, array) {
+                    panelTitle.innerHTML += element;
+                    if (index < array.length -1) {
+                        panelTitle.innerHTML += ", ";
+                    }
+                });
+
+                // create body
+                var panelBody = document.createElement("div");
+                panelBody.classList.add("panel-body", "row");
+
+                // create description
+                var panelDescription = document.createElement("p");
+                panelDescription.innerHTML = description;
+
+                // create soundfile
+                var panelSoundfile = document.createElement("audio");
+                //Display the audio with controls
+                panelSoundfile.setAttribute("controls", "controls");
+                var source = document.createElement("source");
+                source.src = soundfile;
+                source.type = "audio/mpeg";
+                panelSoundfile.appendChild(source);
+
+
+                //put the elements in each other
+                panelBody.appendChild(panelDescription)
+                panelBody.appendChild(panelSoundfile);
+                panelHeading.appendChild(panelTitle);
+                panel.appendChild(panelHeading)
+                panel.appendChild(panelBody);
+                newErrand.appendChild(panel);
                 $("#errands_list").append(newErrand);
             }
         </script>
