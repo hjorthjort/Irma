@@ -156,6 +156,12 @@
             e.preventDefault();
             e.stopPropagation();
 
+            if ($(this).data('clicked') !== undefined) {
+                return;
+            }
+
+            $(this).data('clicked', 'true');
+
             var phoneNr = $(this).data('phoneNr');
             $(this).html(phoneNr);
 
