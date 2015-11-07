@@ -16,6 +16,7 @@ exports.add = function (params, callback) {
 exports.getByPhoneNumber = function(phnNumber, callback) {
 	exports.getAll(function(err, result) {
 		console.log(result);
+		callback(null, result);
 	});
 };
 
