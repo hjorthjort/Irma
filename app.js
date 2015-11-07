@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var watson = require('./routes/watson');
 var errands = require('./routes/errands');
+var recordings = require('./routes/recordings');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/watson', watson);
 app.use('/errands', errands);
+app.use('/recordings', recordings);
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
