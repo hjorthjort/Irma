@@ -22,7 +22,14 @@ router.post('/', function(req, res, next) {
 
     // build path to save recording to
     var filename = recordingUrl.split('/').last();
-    var pathToFile = __dirname + '/../resources/recordings/' + filename;
+    var recordingsDirectory = __dirname + '/../resources/recordings/';
+    var pathToFile = recordingsDirectory + filename;
+
+    try {
+        fs.accessSync(recordingsDirectory, fs.F_OK);
+    } catch (err) {
+        fs.mkdirSync(recordingsDirectory);
+    }
 
     // get recording from server and write it to our file system
     var stream = request.get(recordingUrl).auth(username, password, false).pipe(fs.createWriteStream(pathToFile));
