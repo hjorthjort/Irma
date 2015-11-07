@@ -161,6 +161,8 @@
             $(this).css('color', 'black');
             $(this).css('cursor', 'default');
 
+            $(this).closest('.card-action').prepend('<p class="left" style="margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>');
+
             $(this).prepend('<i class="mdi-communication-phone"></i> ');
 
             return false;
