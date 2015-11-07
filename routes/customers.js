@@ -4,7 +4,7 @@ var router = express.Router();
 var customers = require('../modules/customers');
 
 router.get('/', function(req, res, next) {
-    customers.getAll(function (err, result) {
+    customers.getByPhoneNumber('0738956449', function (err, result) {
         if (err) {
             return res.status(500).json(err);
         }
