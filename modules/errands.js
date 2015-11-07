@@ -17,10 +17,10 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
         }
 
         fs.createReadStream(pathToRecording).pipe(
-            errands.attachment.insert(body.id, 'recording', null, 'audio/wav')
-        );
-
-        callback(null, body);
+            errands.attachment.insert(body.id, 'recording.wav', null, 'audio/wav', { rev: body.rev })
+        ).on('end', function () {
+            callback(null, body);
+        });
     });
 };
 
