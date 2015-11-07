@@ -11,6 +11,16 @@ nav .brand-logo {
   color: #444;
 }
 
+.splash-header {
+  font-weight: bold;
+  text-shadow: 0px 0px 15px black;
+}
+
+.phone {
+  font-size: 14pt;
+  font-weight: normal;
+}
+
 p {
   line-height: 2rem;
 }
