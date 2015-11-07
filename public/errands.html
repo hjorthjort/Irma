@@ -74,14 +74,10 @@
             </div>
         </section>
         <script>
-            var errands = $.get("http://localhost:6001/errands", {}, function (errands, string, jqXHR) {
-                console.info("Got stuff from db");
-                console.info(errands);
-                var errandOne = errands.rows[0];
-
-                console.info(errandOne);
-                addErrand(errandOne.doc.description, errandOne.doc._attachments["recording.wav"], errandOne.doc.tags, errandOne.doc.phone_number)
-
+            var errands = $.get("http://localhost:6001/errands", {}, function(errands) {
+                errands.rows.map(function(errand){
+                    addErrand(errand.doc.description, errand.id, errand.doc.tags, errand.doc.phone_number)
+                });
             });
 
 
@@ -90,6 +86,7 @@
             var tags = ['monitor', 'wifi', 'crying', 'super powers', 'explorer', 'arch linux' ];
             var phone = "0763 16 22 40"
 
+            /*addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
@@ -97,12 +94,10 @@
             addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
-            addErrand(description, soundfile, tags, phone);
-            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);*/
 
 
-            function addErrand(description, soundfile, tags, phone) {
-
+            function addErrand(description, id, tags, phone) {
                 //Create table element, so we fit two cards on every row
                 var newErrand = document.createElement("div");
                 newErrand.classList.add("col-lg-6");
@@ -184,8 +179,8 @@
                 //Display the audio with controls
                 cardSoundfile.setAttribute("controls", "controls");
                 var source = document.createElement("source");
-                source.setAttribute("src", soundfile["digest"]);
-                source.setAttribute("type", "audio/mpeg");
+                source.setAttribute("src", "/errands/"+id+"/recording.wav");
+                source.setAttribute("type", "audio/wav");
                 source.setAttribute("preload", "metadata");
                 console.info(soundfile);
                 console.info(source);
