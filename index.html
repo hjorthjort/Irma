@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.css">
+        <link rel="stylesheet" href="stylesheets/bootstrap_flatly.css">
         <!-- Import jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Plugin CSS -->
+        <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+        <link rel="stylesheet" href="stylesheets/animate.css" type="text/css">
+
+        <script src="js/wow.min.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+
         <title>Irma: Friendly and fast tech support</title>
     </head>
     <neck></neck>
@@ -59,10 +71,27 @@
 
                 // create body
                 var panelBody = document.createElement("div");
-                panelBody.classList.add("panel-body", "row");
+                panelBody.classList.add("panel-body");
+
+                var panelLeft = document.createElement("div");
+                panelLeft.classList.add("col-lg-4", "row");
+
+                var panelImage = document.createElement("i");
+                panelImage.classList.add("fa", "fa-laptop", "fa-5x", "wow", "bounceIn", "col-lg-12", "text-center");
+                panelImage.setAttribute("data-wow-delay", ".2s");
+
+                var panelButton = document.createElement("a");
+                panelButton.classList.add("btn", "btn-info", "col-lg-12", "text-bottom");
+                panelButton.innerHTML = "I can help!";
+                panelButton.onclick = function () {
+                    panelButton.innerHTML = phone;
+                    panelButton.classList.remove("btn-info");
+                    panelButton.classList.add("btn-success");
+                };
 
                 // create description
                 var panelDescription = document.createElement("p");
+                panelDescription.classList.add("col-lg-8");
                 panelDescription.innerHTML = description;
 
                 // create soundfile
@@ -70,14 +99,17 @@
                 //Display the audio with controls
                 panelSoundfile.setAttribute("controls", "controls");
                 var source = document.createElement("source");
-                source.src = soundfile;
-                source.type = "audio/mpeg";
+                source.setAttribute("src", soundfile);
+                source.setAttribute("type", "audio/mpeg");
+                source.setAttribute("preload", "metadata");
                 panelSoundfile.appendChild(source);
 
 
                 //put the elements in each other
-                panelBody.appendChild(panelDescription)
-                panelBody.appendChild(panelSoundfile);
+                panelLeft.appendChild(panelImage);
+                panelLeft.appendChild(panelButton);
+                panelBody.appendChild(panelLeft);
+                panelBody.appendChild(panelDescription).appendChild(panelSoundfile);
                 panelHeading.appendChild(panelTitle);
                 panel.appendChild(panelHeading)
                 panel.appendChild(panelBody);
@@ -87,4 +119,3 @@
         </script>
     </body>
 </html>
-
