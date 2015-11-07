@@ -75,7 +75,7 @@
 
 <script id="errand-template" type="text/x-handlebars-template">
     <div class="col s6">
-        <div class="card">
+        <div class="card" data-id="{{id}}">
             <div class="card-content">
                 <div class="row" style="margin-bottom: 0;">
                     <div class="col s4">
@@ -127,7 +127,7 @@
         var i = 0;
         var rows = 0;
 
-        errands.rows.map(function(errand){
+        errands.map(function(errand){
             var index = i % users.length;
             var title = users[index].name + ", " + users[index].age;
             var pic = users[index].pic;
@@ -135,7 +135,7 @@
             var context = {
                 title: title,
                 description: errand.doc.description,
-                id: errand.id,
+                id: errand.doc._id,
                 tags: errand.doc.tags,
                 phone: errand.doc.phone_number,
                 pic: pic
@@ -166,6 +166,22 @@
             $(this).closest('.card-action').prepend('<p class="left" style="margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>');
 
             $(this).prepend('<i class="mdi-communication-phone"></i> ');
+
+            $('.done-button').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var id = $(this).closest('.card').data('id');
+
+                $.ajax({
+                    method: 'PUT',
+                    url: '/errands/complete/' + id
+                });
+
+                $(this).closest('.card').remove();
+
+                return false;
+            });
 
             return false;
         });
