@@ -49,8 +49,6 @@ exports.concept_insights = function (text, callback) {
             return callback(err);
         }
 
-        console.log(result);
-
         var annotations = result.annotations;
         var concepts = annotations.map(function (annotation) {
             return annotation.concept.label;

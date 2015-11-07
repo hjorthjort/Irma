@@ -23,6 +23,8 @@ function createFolderIfDoesNotExist(folder) {
 }
 
 router.post('/', function(req, res, next) {
+    console.log('body', req.body);
+
     // get post parameters
     var from = req.body.from;
     var created = req.body.created;
@@ -44,12 +46,14 @@ router.post('/', function(req, res, next) {
         // transform the audio to text using Watson
         watson.speech_to_text(pathToFile, function (err, transcript) {
             if (err) {
+                console.log(err);
                 return res.status(500).json(err);
             }
 
             // analyze text with Watson to get relevant key words
             watson.concept_insights(transcript, function (err, concepts) {
                 if (err) {
+                    console.log(err);
                     return res.status(500).json(err);
                 }
 
@@ -62,6 +66,7 @@ router.post('/', function(req, res, next) {
                     timestamp: created
                 }, function (err, result) {
                     if (err) {
+                        console.log(err);
                         return res.status(500).json(err);
                     }
 
