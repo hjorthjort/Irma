@@ -1,11 +1,7 @@
 var exports = {};
 
-var cloudant = require('./cloudant').connect(function (err, cloudant) {
-    if (err) {
-        return console.log(err);
-    }
-});
-var customers = cloudant.db.use('customers');
+var db = require('./db');
+var customers = db.use('customers');
 
 exports.add = function (params, callback) {
     customers.insert(params, function (err, body) {

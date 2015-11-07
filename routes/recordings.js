@@ -22,6 +22,15 @@ function createFolderIfDoesNotExist(folder) {
     }
 }
 
+function cleanup(pathToRecording) {
+    // remove sound file from system
+    fs.unlink(pathToRecording, function (err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+}
+
 router.post('/', function(req, res, next) {
     console.log('body', req.body);
 
@@ -32,20 +41,20 @@ router.post('/', function(req, res, next) {
 
     // build path to save recording to
     var filename = recordingUrl.split('/').last();
-    var resourcesDirectory = __dirname + '/../resources/';
-    var recordingsDirectory = resourcesDirectory + 'recordings/';
-    var pathToFile = recordingsDirectory + filename;
+    var tmpFolder = __dirname + '/../tmp/';
+    var pathToRecording = tmpFolder + filename;
 
-    createFolderIfDoesNotExist(resourcesDirectory);
-    createFolderIfDoesNotExist(recordingsDirectory);
+    createFolderIfDoesNotExist(tmpFolder);
 
     // get recording from server and write it to our file system
-    var stream = request.get(recordingUrl).auth(username, password, false).pipe(fs.createWriteStream(pathToFile));
+    request.get(recordingUrl).auth(username, password, false)
+            .pipe(fs.createWriteStream(pathToRecording))
+            .on('finish', function () {
 
-    stream.on('finish', function () {
         // transform the audio to text using Watson
-        watson.speech_to_text(pathToFile, function (err, transcript) {
+        watson.speech_to_text(pathToRecording, function (err, transcript) {
             if (err) {
+                cleanup(pathToRecording);
                 console.log(err);
                 return res.status(500).json(err);
             }
@@ -53,18 +62,15 @@ router.post('/', function(req, res, next) {
             // analyze text with Watson to get relevant key words
             watson.concept_insights(transcript, function (err, concepts) {
                 if (err) {
+                    cleanup(pathToRecording);
                     console.log(err);
                     return res.status(500).json(err);
                 }
 
                 // finally, save the errand with all the data
-                errands.add({
-                    recording: filename,
-                    description: transcript,
-                    tags: concepts,
-                    phone_number: from,
-                    timestamp: created
-                }, function (err, result) {
+                errands.add(pathToRecording, transcript, concepts, from, created, function (err, result) {
+                    cleanup(pathToRecording);
+
                     if (err) {
                         console.log(err);
                         return res.status(500).json(err);

@@ -1,17 +1,24 @@
 var exports = {};
 
-var cloudant = require('./cloudant').connect(function (err, cloudant) {
-    if (err) {
-        return console.log(err);
-    }
-});
-var errands = cloudant.db.use('errands');
+var fs = require('fs');
 
-exports.add = function (params, callback) {
-    errands.insert(params, function (err, body) {
+var db = require('./db');
+var errands = db.use('errands');
+
+exports.add = function (pathToRecording, description, tags, phone_number, timestamp, callback) {
+    errands.insert({
+        description: description,
+        tags: tags,
+        phone_number: phone_number,
+        timestamp: timestamp
+    }, function (err, body) {
         if (err) {
             return callback(err);
         }
+
+        fs.createReadStream(pathToRecording).pipe(
+            errands.attachment.insert(body.id, 'recording', null, 'audio/wav')
+        );
 
         callback(null, body);
     });
