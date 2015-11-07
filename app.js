@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var watson = require('./routes/watson');
 var errands = require('./routes/errands');
 var recordings = require('./routes/recordings');
+var customers = require('./routes/customers');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/', routes);
 app.use('/watson', watson);
 app.use('/errands', errands);
 app.use('/recordings', recordings);
+app.use('/customers', customers);
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
