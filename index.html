@@ -9,14 +9,15 @@
         <link type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Plugin CSS -->
+        <link rel="stylesheet" href="materialize/css/materialize.css" type="text/css">
         <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
         <link rel="stylesheet" href="stylesheets/animate.css" type="text/css">
-        <link rel="stylesheet" href="materialize/css/materialize.css" type="text/css">
 
         <script src="js/wow.min.js"></script>
         <script>
             new WOW().init();
         </script>
+        <script src="js/creative.js"></script>
 
         <title>Irma: Friendly and fast tech support</title>
     </head>
@@ -25,13 +26,14 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h1>Jumbotron</h1>
+                    <h1>Be a helper.</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+                    <p>Find people who need you. Heed the call. Get rewarded.</p>
+                    <p>Read about all open support request below. When you see one that you feel you can help with, click the button and you will get a phone number to call. You will be rewarded based on time spent and results.</p>
+                    <p><a href="#errands_section" class="btn-flatly btn-flatly-primary btn-flatly-lg page-scroll">Learn more</a></p>
                 </div>
             </div>
         </div>
@@ -54,9 +56,14 @@
             addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
             addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+            addErrand(description, soundfile, tags, phone);
+
 
             function addErrand(description, soundfile, tags, phone) {
-                //Create table element
+
+                //Create table element, so we fit two cards on every row
                 var newErrand = document.createElement("div");
                 newErrand.classList.add("col-lg-6");
 
@@ -64,7 +71,6 @@
                 var card = document.createElement("div");
                 card.classList.add("row");
 
-                //Create columns
                 var cardCols = document.createElement("div");
                 cardCols.classList.add("card", "blue-grey", "darken-1");
 
@@ -108,13 +114,13 @@
                 var cardButtonDiv = document.createElement("div");
                 cardButtonDiv.classList.add("row");
                 var cardButton = document.createElement("a");
-                cardButton.classList.add("btn", "btn-info", "col-lg-12", "text-center");
-                cardButton.setAttribute("style", "text-align: center");
-                cardButton.innerHTML = "I can help!";
+
+                cardButton.classList.add("btn-material", "waves-effect", "waves-light", "col-lg-12", "text-center");
+                cardButton.innerHTML = "<i class='fa fa-phone fa-2x'></i>&nbsp;<span>I'll help!</span>";
                 cardButton.onclick = function () {
-                    cardButton.innerHTML = phone;
-                    cardButton.classList.remove("btn-info");
-                    cardButton.classList.add("btn-success");
+                    cardButton.getElementsByTagName("span")[0].innerHTML = phone;
+                    cardButton.classList.remove("btn-material");
+                    cardButton.classList.add("btn-material");
                 };
                 cardButtonDiv.appendChild(cardButton);
 
@@ -132,6 +138,7 @@
                 // create soundfile
                 var cardSoundfileDiv = document.createElement("div");
                 cardSoundfileDiv.classList.add("row");
+//                cardSoundfileDiv.innerHTML='<div class="videoPlayer"> <div class="play"><a href="javascript:void(0);">▶</a></div> <div class="progress"> <div class="loading"></div> <div class="playback"></div> </div> <div class="time">11:57</div> </div>';
                 var cardSoundfile = document.createElement("audio");
                 cardSoundfile.classList.add("col-lg-12", "text-center");
                 //Display the audio with controls

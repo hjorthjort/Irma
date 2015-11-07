@@ -1,0 +1,65 @@
+.videoPlayer {
+    background-color: hsla(0,0%,0%,.75);
+    background-image: linear-gradient(hsla(0,0%,100%,0), hsla(0,0%,100%,.025) 50%, transparent 50%, hsla(0,0%,0%,.1));
+    border: 1px solid #111;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.15),
+    inset 0 -1px 1px hsla(0,0%,0%,.25),
+    0 2px 2px hsla(0,0%,0%,.25);
+    display: inline-block;
+    font-size: 0;
+    padding: 16px;
+    text-align: left;
+}
+.videoPlayer div {
+    color: #fff;
+    display: inline-block;
+    font: bold 14px/10px sans-serif;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+.videoPlayer .play {
+    font-size: 20px;
+    margin-right: 16px;
+    position: relative;
+    text-shadow: 0 1px 1px hsla(0,0%,0%,.5);
+    top: -2px;
+}
+.videoPlayer .progress {
+    background: hsla(0,0%,0%,.25);
+    border: 1px solid #111;
+    border-radius: 5px;
+    box-shadow: inset 0 0 1px 1px hsla(0,0%,0%,.1),
+    inset 0 2px 3px hsla(0,0%,0%,.25),
+    0 1px 1px hsla(0,0%,100%,.1);
+    height: 10px;
+    margin-right: 16px;
+    width: 40px;
+}
+.videoPlayer .loading {
+    background-color: hsla(0,0%,100%,.05);
+    border-radius: 5px;
+    box-shadow: inset 0 0 1px 1px hsla(0,0%,0%,.1),
+    inset 0 1px 1px hsla(0,0%,100%,.1),
+    inset 0 -1px 1px hsla(0,0%,0%,.1);
+    height: 10px;
+    width: 75%;
+}
+.videoPlayer .playback {
+    background-color: #f60;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.25),
+    inset 0 -1px 1px hsla(0,0%,0%,.25);
+    height: 10px;
+    position: relative;
+    top: -10px;
+    width: 60%;
+}
+.videoPlayer .time {
+    margin-right: 16px;
+    position: relative;
+    text-shadow: 0 1px 1px hsla(0,0%,0%,.5);
+    top: -1px;
+}
