@@ -41,4 +41,22 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.delete('/:id', function (req, res, next) {
+    var id = req.params.id;
+    errands.get(id, function (err, result) {
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        var rev = result._rev;
+        errands.destroy(id, rev, function (err, result) {
+            if (err) {
+                return res.status(500).json(err);
+            }
+
+            res.json(result);
+        });
+    });
+});
+
 module.exports = router;

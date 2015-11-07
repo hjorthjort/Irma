@@ -34,7 +34,7 @@
           <h3 class="header col s12 light splash-header">Friendly tech support. At every hour. For any issue.</h3>
         </div>
         <div class="row center">
-          <a href="register.html" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+          <a href="#register" class="btn-large waves-effect waves-light teal lighten-1 page-scroll">Get Started</a>
         </div>
         <br><br>
 
@@ -55,7 +55,7 @@
             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
             <h5 class="center">Tech made easy</h5>
 
-            <p class="light">One support number for all your computer and IT problems. When you are a part of Irma, you are always prepared for the unexpected.</p>
+            <p class="light">One support number for all your computer and IT problems. When you are a part of <span style="font-weight: bold" class="teal-text">Irma</span>, you are always prepared for the unexpected.</p>
           </div>
         </div>
 
@@ -64,7 +64,7 @@
             <h2 class="center brown-text"><i class="material-icons">phone</i></h2>
             <h5 class="center">One number for everything</h5>
             <p class="light">Whatever problem you are having, all you have to do is call our number. Tell us what is the matter, and one of our experts will call you back. You pay based on time and results.</p>
-              <div class="center"><h6 class="chip phone">+46 763 16 22 40</h6></div>
+              <div class="center"><h6 class="chip phone">+46 766 86 10 42</h6></div>
           </div>
         </div>
 
@@ -101,7 +101,7 @@
         <div class="col s12 center">
           <h3><i class="mdi-hardware-headset-mic brown-text"></i></h3>
           <h4>How it works</h4>
-          <p class="left-align light">By registering with Irma, you get access to our support number, every hour of every day. Call us and describe your problem. We use state of the art artificial intelligence discern the details of your problem and forward it to our experts. Our experts then decide among themselves who is the best fit to handle your specific problem, and will call you back. When your support call ends, they get rewarded based on their performance and time spent. You get charged immediately or on a monthly basis, whichever you prefer.</p>
+          <p class="left-align light">By registering with <span style="font-weight: bold" class="teal-text">Irma</span>, you get access to our support number, every hour of every day. Call us and describe your problem. We use state of the art artificial intelligence discern the details of your problem and forward it to our experts. Our experts then decide among themselves who is the best fit to handle your specific problem, and will call you back. When your support call ends, they get rewarded based on their performance and time spent. You get charged immediately or on a monthly basis, whichever you prefer.</p>
         </div>
       </div>
     </div>
@@ -113,11 +113,92 @@
       <div class="container">
         <div class="row center">
           <h3 class="header col s12 light splash-header">Register once. Access any time.</h3>
-            <a href="register.html" class="btn-large waves-effect waves-light teal lighten-1">Register now</a>
+            <a href="#register" class="btn-large waves-effect waves-light teal lighten-1 page-scroll">Register now</a>
         </div>
       </div>
     </div>
     <div class="parallax"><img src="img/background3.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <div class="container">
+    <div class="section" id="register">
+
+      <div class="row">
+        <form class="col s4 offset-s1">
+          <div class="row">
+            <div class="col s12">
+              <h5>Customer</h5>
+              <p>Are you in need of technical support? Are your children or grand children fed up with you calling them to help you with your mail? Do you frequently lose your password</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="customer_name" type="text" class="validate">
+              <label for="customer_name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="customer_age" type="text" class="validate">
+              <label for="customer_age">Age</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="customer_phone_number" type="tel" class="validate">
+              <label for="customer_phone_number">Phone Number</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="customer_email" type="email" class="validate">
+              <label for="customer_email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="customer_password" type="password" class="validate">
+              <label for="customer_password">Password</label>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="col s12">
+              <button class="btn waves-effect waves-light" type="submit" name="hej">Register as a customer</button>
+            </div>
+          </div>
+        </form>
+
+        <form class="col s4 offset-s2">
+          <div class="row">
+            <div class="col s12">
+              <h5>Expert</h5>
+              <p>Are you a technology wiz-kid, and want to make use of your knowledge? How does earning money while doing it sound?</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="expert_name" type="text" class="validate">
+              <label for="expert_name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="expert_email" type="email" class="validate">
+              <label for="expert_email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="expert_password" type="password" class="validate">
+              <label for="expert_password">Password</label>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="col s12">
+              <button class="btn waves-effect waves-light" type="submit">Register as an expert</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <footer class="page-footer teal">
@@ -161,6 +242,20 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
 
   </body>
 </html>
