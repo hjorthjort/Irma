@@ -6,7 +6,7 @@ var customers = require('../modules/customers');
 router.get('/', function(req, res, next) {
     customers.getAll(function (err, result) {
         if (err) {
-            return console.log(err);
+            return res.status(500).json(err);
         }
 
         res.json(result);
@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
 
     customers.add(params, function (err, result) {
         if (err) {
-            return console.log(err);
+            return res.status(500).json(err);
         }
 
         res.json(result);

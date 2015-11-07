@@ -6,7 +6,7 @@ var supporters = require('../modules/supporters');
 router.get('/', function(req, res, next) {
     supporters.getAll(function (err, result) {
         if (err) {
-            return console.log(err);
+            return res.status(500).json(err);
         }
 
         res.json(result);
@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
 
     supporters.add(params, function (err, result) {
         if (err) {
-            return console.log(err);
+            return res.status(500).json(err);
         }
 
         res.json(result);

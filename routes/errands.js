@@ -6,7 +6,7 @@ var errands = require('../modules/errands');
 router.get('/', function(req, res, next) {
     errands.getAll(function (err, result) {
         if (err) {
-            return console.log(err);
+            return res.status(500).json(err);
         }
 
         res.json(result);
@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
 
     errands.add(params, function (err, result) {
         if (err) {
-            return console.log(err);
+            return res.status(500).json(err);
         }
 
         res.json(result);
