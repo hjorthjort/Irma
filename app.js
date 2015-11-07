@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var watson = require('./routes/watson');
 
 var app = express();
 
@@ -28,7 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// setup routes
 app.use('/', routes);
+app.use('/watson', watson);
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
