@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>Irma: Friendly and fast tech support</title>
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="start/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="start/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <meta charset="utf-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="stylesheets/bootstrap_flatly.css">
@@ -9,8 +18,6 @@
         <link type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Plugin CSS -->
-        <link rel="stylesheet" href="materialize/css/materialize.css" type="text/css">
-        <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
         <link rel="stylesheet" href="stylesheets/animate.css" type="text/css">
 
         <script src="js/wow.min.js"></script>
@@ -21,22 +28,44 @@
 
         <title>Irma: Friendly and fast tech support</title>
     </head>
-    <neck></neck>
     <body>
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h1>Be a helper.</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <p>Find people who need you. Heed the call. Get rewarded.</p>
-                    <p>Read about all open support request below. When you see one that you feel you can help with, click the button and you will get a phone number to call. You will be rewarded based on time spent and results.</p>
-                    <p><a href="#errands_section" class="btn-flatly btn-flatly-primary btn-flatly-lg page-scroll">Learn more</a></p>
-                </div>
-            </div>
+
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html"><i class="mdi-action-home"></i></a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="errands.html"><i class="mdi-action-home"></i></a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
+    </nav>
+
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <br><br>
+                    <div class="row center">
+                        <img src="img/logo.png">
+                        <h2 class="header col s12 light splash-header">Be a helper.</h2>
+                    </div>
+                    <div class="row center">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <p class="jumbotron-text">Find people who need you. Heed the call. Get rewarded.</p>
+                                <p class="jumbotron-text">Read about all open support request below. When you see one that you feel you can help with, click the button and you will get a phone number to call. You will be rewarded based on time spent and results.</p>
+                                <p><a href="#errands_section" class="btn-flatly btn-flatly-primary btn-flatly-lg page-scroll">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+
+                </div>
+            </div>
+            <div class="parallax"><img src="img/jumbotron.jpg" alt="Unsplashed background img 1"></div>
+    </div>
         <section id="errands_section">
             <div class="container">
                 <div id="errands_list" class="row">
@@ -166,5 +195,9 @@
                 $("#errands_list").append(newErrand);
             }
         </script>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
     </body>
 </html>
