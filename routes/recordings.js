@@ -69,7 +69,7 @@ router.post('/', function(req, res, next) {
 
                 // finally, save the errand with all the data
                 errands.add(pathToRecording, transcript, concepts, from, created, function (err, result) {
-                    //cleanup(pathToRecording);
+                    cleanup(pathToRecording);
 
                     if (err) {
                         console.log(err);
