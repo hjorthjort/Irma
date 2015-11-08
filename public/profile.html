@@ -10,6 +10,9 @@
     <link href="start/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="start/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+    <!-- Handlebars templating -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
     <script>
         function login() {
             console.info($('#input'))
@@ -167,73 +170,48 @@
             <!-- My errands -->
             <div class="col l9 m12 s12">
                 <h4 class="center" style="margin-bottom: 1em">My current errands</h4>
-                <ul class="collapsible" data-collapsible="accordion">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">phone_paused</i>Anne, 63 &nbsp;&nbsp;
-                            <div class="right hide-on-small-and-down">
-                                <div class="chip">wifi</div>
-                                <div class="chip">network</div>
-                                <div class="chip">browser</div>
-                                <div class="chip">internet</div>
-                            </div>
-                        </div>
-                        <div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">phone_paused</i>Rosemarie, 51 &nbsp;&nbsp;
-                            <div class="right hide-on-med-and-down">
-                                <div class="chip">mac</div>
-                                <div class="chip">booting</div>
-                                <div class="chip">install</div>
-                            </div>
-                        </div>
-                        <div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">phone_paused</i>John, 63 &nbsp;&nbsp;
-                            <div class="right hide-on-med-and-down">
-                                <div class="chip">upload</div>
-                                <div class="chip">facebook</div>
-                                <div class="chip">photo</div>
-                                <div class="chip">kids</div>
-                                <div class="chip">freeze</div>
-                            </div>
-                        </div>
-                        <div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>
-                    </li>
+                <ul class="collapsible" data-collapsible="accordion" id="taken-errands">
+                    <!--<li>-->
+                        <!--<div class="collapsible-header"><i class="material-icons">phone_paused</i>Anne, 63 &nbsp;&nbsp;-->
+                            <!--<div class="right hide-on-small-and-down">-->
+                                <!--<div class="chip">wifi</div>-->
+                                <!--<div class="chip">network</div>-->
+                                <!--<div class="chip">browser</div>-->
+                                <!--<div class="chip">internet</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="collapsible-header"><i class="material-icons">phone_paused</i>Rosemarie, 51 &nbsp;&nbsp;-->
+                            <!--<div class="right hide-on-med-and-down">-->
+                                <!--<div class="chip">mac</div>-->
+                                <!--<div class="chip">booting</div>-->
+                                <!--<div class="chip">install</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="collapsible-header"><i class="material-icons">phone_paused</i>John, 63 &nbsp;&nbsp;-->
+                            <!--<div class="right hide-on-med-and-down">-->
+                                <!--<div class="chip">upload</div>-->
+                                <!--<div class="chip">facebook</div>-->
+                                <!--<div class="chip">photo</div>-->
+                                <!--<div class="chip">kids</div>-->
+                                <!--<div class="chip">freeze</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>-->
+                    <!--</li>-->
                 </ul>
             </div>
             <!-- Salary -->
             <div class="col l9 s12" style="margin-top: 2em;">
                 <h4 class="center" style="margin-bottom: 1em;">Salary</h4>
-                <ul class="collection with-header z-depth-1">
+                <ul class="collection with-header z-depth-1" id="completed-errands">
                     <li class="collection-item"><h3 class="center teal-text">$69.74</h3><h5 class="center teal-text">this month</h5></li>
-                    <li class="collection-item"><i class="tiny mdi-action-done"></i> Annelie, 39
-                        <div class="right">
-                            <div class="teal-text" style="font-weight: bold">$19.03</div>
-                        </div>
-                    </li>
-                    <li class="collection-item"><i class="tiny mdi-action-done"></i> Ingrid, 77
-                        <div class="right">
-                            <div class="teal-text" style="font-weight: bold">$10.30</div>
-                        </div>
-                    </li>
-                    <li class="collection-item">
-                        <i class="tiny mdi-action-done"></i> Robin, 32
-                        <div class="right">
-                            <div class="teal-text" style="font-weight: bold">$29.87</div>
-                        </div>
-                    </li>
-                    <li class="collection-item"><i class="tiny mdi-action-done"></i> Ingrid, 77
-                        <div class="right">
-                            <div class="teal-text" style="font-weight: bold">$6.18</div>
-                        </div>
-                    </li>
-                    <li class="collection-item"><i class="tiny mdi-action-done"></i> Jan, 61
-                        <div class="right">
-                            <div class="teal-text" style="font-weight: bold">$4.36</div>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </div> <!-- End row -->
@@ -244,6 +222,68 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+
+<script id="taken-errand-template" type="text/x-handlebars-template">
+    <li>
+        <div class="collapsible-header"><i class="material-icons">phone_paused</i>{{name}}, {{age}} &nbsp;&nbsp;
+            <div class="right hide-on-small-and-down">
+                {{#each tags}}
+                <div class="chip">{{this}}</div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="collapsible-body"><h5 class="center teal-text">{{phone}}</h5><p>{{description}}</p></div>
+    </li>
+</script>
+
+<script id="completed-errand-template" type="text/x-handlebars-template">
+    <li class="collection-item"><i class="tiny mdi-action-done"></i> {{name}}, {{age}}
+        <div class="right">
+            <div class="teal-text" style="font-weight: bold">$19.03</div>
+        </div>
+    </li>
+</script>
+
+<script>
+    var takenSource = $("#taken-errand-template").html();
+    var takenTemplate = Handlebars.compile(takenSource);
+
+    $.get("/errands/taken", {}, function(errands) {
+        errands.forEach(function (errand) {
+            var context = {
+                name: errand.doc.user_name,
+                age: errand.doc.user_age,
+                description: errand.doc.description,
+                tags: errand.doc.tags,
+                phone: errand.doc.phone_number
+            };
+
+            var html = takenTemplate(context);
+
+            $('#taken-errands').append(html);
+        });
+
+        $('.collapsible').collapsible();
+    });
+
+    var completedSource = $("#completed-errand-template").html();
+    var completedTemplate = Handlebars.compile(completedSource);
+
+    $.get("/errands/completed", {}, function(errands) {
+        errands.forEach(function (errand) {
+            var context = {
+                name: errand.doc.user_name,
+                age: errand.doc.user_age
+            };
+
+            var html = completedTemplate(context);
+
+            $('#completed-errands').append(html);
+        });
+
+        $('.collapsible').collapsible();
+    });
+</script>
 
 <!-- Remove hiding div -->
 <script>
