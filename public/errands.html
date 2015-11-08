@@ -131,6 +131,9 @@
         errands.map(function(errand){
             var index = i % users.length;
             var title = users[index].name + ", " + users[index].age;
+			if(typeof errand.doc.user_name !== 'undefined') {
+				title = errand.doc.user_name + ", " + errand.doc.user_age;
+			}
             var pic = users[index].pic;
 
             var context = {
