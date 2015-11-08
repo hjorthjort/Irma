@@ -122,7 +122,10 @@
                 </div>
             </div>
             <div class="card-action" style="padding: 0;">
-                <p class="right"><a href="#" data-phone-nr="{{phone}}" class="help-button">I'll help!</a></p>
+                <p class="left put-back-button-wrapper" style="display: none; margin-left: 20px;"><a href="#" style="color: #1565c0;" class="put-back-button">Put back...</a></p>
+                <p class="left done-button-wrapper" style="display: none; margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>
+                <p class="right help-button-wrapper"><a href="#" class="help-button">I'll help!</a></p>
+                <p class="right phone-button-wrapper" style="display: none;"><a href="#" data-phone="{{phone}}" class="phone-button" style="color: #1565c0;"><i class="mdi-communication-phone"></i> Call customer</a></p>
             </div>
         </div>
     </div>
@@ -163,38 +166,53 @@
             e.preventDefault();
             e.stopPropagation();
 
-            if ($(this).data('clicked') !== undefined) {
-                return;
-            }
-
-            $(this).data('clicked', 'true');
-
-            var phoneNr = $(this).data('phoneNr');
-            $(this).html(phoneNr);
-
+            $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'inline');
+            $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'inline');
+            $(this).closest('.card-action').find('.phone-button-wrapper').css('display', 'inline');
+            $(this).closest('.card-action').find('.help-button-wrapper').css('display', 'none');
             $(this).closest('.card').addClass('teal lighten-4');
-            $(this).css('color', 'black');
-            $(this).css('cursor', 'default');
 
-            $(this).closest('.card-action').prepend('<p class="left" style="margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>');
+            return false;
+        });
 
-            $(this).prepend('<i class="mdi-communication-phone"></i> ');
+        $('.phone-button').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
 
-            $('.done-button').click(function (e) {
-                e.preventDefault();
-                e.stopPropagation();
+            // send post to call path
+            var phoneNumber = $(this).data('phone');
 
-                var id = $(this).closest('.card').data('id');
+            $.post('/call/' + phoneNumber);
 
-                $.ajax({
-                    method: 'PUT',
-                    url: '/errands/complete/' + id
-                });
+            return false;
+        });
 
-                $(this).closest('.card').remove();
+        $('.done-button').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
 
-                return false;
+            // send post put request to complete path
+            var id = $(this).closest('.card').data('id');
+
+            $.ajax({
+                method: 'PUT',
+                url: '/errands/complete/' + id
             });
+
+            $(this).closest('.card').remove();
+
+            return false;
+        });
+
+        $('.put-back-button').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'none');
+            $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'none');
+            $(this).closest('.card-action').find('.phone-button-wrapper').css('display', 'none');
+            $(this).closest('.card-action').find('.help-button-wrapper').css('display', 'inline');
+            $(this).closest('.card').removeClass('teal lighten-4');
 
             return false;
         });
