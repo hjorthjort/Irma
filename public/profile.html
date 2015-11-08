@@ -17,7 +17,6 @@
         function login() {
             console.info($('#input'))
             if ($('#inputEmail').val() == "hjortr@student.chalmers.se" && $('#inputPassword').val() == "fakepass") {
-                $('#nav-left').append('<li id="nav-errands-big"><a href="errands.html">All errands</a></li>');
                 document.cookie = "session=true";
                 $('#login_form').fadeOut();
                 $('#profile').fadeIn();
