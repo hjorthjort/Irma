@@ -17,7 +17,7 @@
         function login() {
             console.info($('#input'))
             if ($('#inputEmail').val() == "hjortr@student.chalmers.se" && $('#inputPassword').val() == "fakepass") {
-                sessionStorage.setItem("logged_in", true);
+                document.cookie = "session=true";
                 $('#login_form').fadeOut();
                 $('#profile').fadeIn();
             } else {
@@ -30,6 +30,12 @@
                 }
             }
             return false;
+        }
+
+        function logout() {
+            console.info("ksadfaskjf");
+            document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
         }
     </script>
 </head>
@@ -87,14 +93,9 @@
         <p id="error_message" class="text-darken-2" style="color: red; display: none">No such user.</p>
         <p id="error_message2" class="text-darken-2" style="color: red; display: none">The e-mail and password don't match.</p>
         <label for="inputEmail" class="sr-only">E-mail</label>
-        <input type="tel" id="inputEmail" name="email" class="form-control" placeholder="my_mail@example.com" required autofocus>
+        <input type="tel" id="inputEmail" name="email" class="form-control" placeholder="my_mail@example.com" value="hjortr@student.chalmers.se" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="fakepass" required>
         <button type="button" class="btn btn-lg btn-primary btn-block" onclick="return login()">Sign in</button>
     </form>
 
@@ -166,7 +167,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="col l12 s12 m12 center" onclick="logout()">
+                    <a class="waves-effect waves-light btn btn-large" href="/">Logout</a>
+                </div>
             </div>
+
             <!-- My errands -->
             <div class="col l9 m12 s12">
                 <h4 class="center" style="margin-bottom: 1em">My current errands</h4>
@@ -264,7 +269,7 @@
 <!-- Remove hiding div -->
 <script>
     $(window).on('load', function() {
-        if (sessionStorage.getItem("logged_in")) {
+        if (document.cookie.indexOf("session") >= 0) {
             $('#login_form').hide();
             $('#profile').show();
         }
