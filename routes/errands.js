@@ -41,6 +41,32 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.put('/take/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    errands.take(id, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
+router.put('/untake/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    errands.untake(id, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
 router.put('/complete/:id', function (req, res, next) {
     var id = req.params.id;
 

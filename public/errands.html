@@ -97,7 +97,11 @@
 
 <script id="errand-template" type="text/x-handlebars-template">
     <div class="col s12 m12 l6">
-        <div class="card" data-id="{{id}}">
+        {{#if taken}}
+            <div class="card teal lighten-4" data-id="{{id}}">
+        {{else}}
+            <div class="card" data-id="{{id}}">
+        {{/if}}
             <div class="card-content">
                 <div class="row" style="margin-bottom: 0;">
                     <div class="center col s12 m12 l4">
@@ -120,10 +124,17 @@
                 </div>
             </div>
             <div class="card-action" style="padding: 0;">
-                <p class="left put-back-button-wrapper" style="display: none; margin-left: 20px;"><a href="#" style="color: #1565c0;" class="put-back-button">Put back...</a></p>
-                <p class="left done-button-wrapper" style="display: none; margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>
-                <p class="right help-button-wrapper"><a href="#" class="help-button">I'll help!</a></p>
-                <p class="right phone-button-wrapper" style="display: none;"><a href="#" data-phone="{{phone}}" class="phone-button" style="color: #1565c0;"><i class="mdi-communication-phone"></i> Call customer</a></p>
+                {{#if taken}}
+                    <p class="left put-back-button-wrapper" style="margin-left: 20px;"><a href="#" style="color: #1565c0;" class="put-back-button">Put back...</a></p>
+                    <p class="left done-button-wrapper" style="margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>
+                    <p class="right help-button-wrapper" style="display: none;"><a href="#" class="help-button">I'll help!</a></p>
+                    <p class="right phone-button-wrapper"><a href="#" data-phone="{{phone}}" class="phone-button" style="color: #1565c0;"><i class="mdi-communication-phone"></i> Call customer</a></p>
+                {{else}}
+                    <p class="left put-back-button-wrapper" style="display: none; margin-left: 20px;"><a href="#" style="color: #1565c0;" class="put-back-button">Put back...</a></p>
+                    <p class="left done-button-wrapper" style="display: none; margin-left: 20px;"><a href="#" style="color: #1565c0;" class="done-button">Done!</a></p>
+                    <p class="right help-button-wrapper"><a href="#" class="help-button">I'll help!</a></p>
+                    <p class="right phone-button-wrapper" style="display: none;"><a href="#" data-phone="{{phone}}" class="phone-button" style="color: #1565c0;"><i class="mdi-communication-phone"></i> Call customer</a></p>
+                {{/if}}
             </div>
         </div>
     </div>
@@ -146,7 +157,8 @@
                 id: errand.doc._id,
                 tags: errand.doc.tags,
                 phone: errand.doc.phone_number,
-                pic: "http://www.gravatar.com/avatar/"+errand.doc.user_gravatar+"?s=250"
+                pic: "http://www.gravatar.com/avatar/"+errand.doc.user_gravatar+"?s=250",
+                taken: errand.doc.taken
             };
             var html = template(context);
 
@@ -163,6 +175,13 @@
         $('.help-button').click(function (e) {
             e.preventDefault();
             e.stopPropagation();
+
+            var id = $(this).closest('.card').data('id');
+
+            $.ajax({
+                method: 'PUT',
+                url: '/errands/take/' + id
+            });
 
             $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'inline');
             $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'inline');
@@ -205,6 +224,13 @@
         $('.put-back-button').click(function (e) {
             e.preventDefault();
             e.stopPropagation();
+
+            var id = $(this).closest('.card').data('id');
+
+            $.ajax({
+                method: 'PUT',
+                url: '/errands/untake/' + id
+            });
 
             $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'none');
             $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'none');

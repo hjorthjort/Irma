@@ -33,7 +33,8 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
 			user_name: name,
 			user_age: age,
 			user_gravatar: gravatar,
-			completed: false
+			completed: false,
+			taken: false
 		}, function (err, body) {
 			if (err) {
 				return callback(err);
@@ -76,6 +77,42 @@ exports.getAll = function (callback) {
 
         callback(null, filteredResult);
     });
+};
+
+exports.take = function (id, callback) {
+	errands.get(id, function (err, body) {
+		if (err) {
+			return callback(err);
+		}
+
+		body.taken = true;
+
+		errands.insert(body, function (err, body) {
+			if (err) {
+				return callback(err);
+			}
+
+			callback(null, body);
+		});
+	})
+};
+
+exports.untake = function (id, callback) {
+	errands.get(id, function (err, body) {
+		if (err) {
+			return callback(err);
+		}
+
+		body.taken = false;
+
+		errands.insert(body, function (err, body) {
+			if (err) {
+				return callback(err);
+			}
+
+			callback(null, body);
+		});
+	})
 };
 
 exports.complete = function (id, callback) {
