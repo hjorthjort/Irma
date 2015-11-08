@@ -62,8 +62,8 @@
                 <h2 class="header col s12 light splash-header">Be a helper.</h2>
             </div>
             <div class="row center">
-                <p class="col s12 light splash-header" style="font-size: 1.2rem; font-weight: normal; padding: 0 20%; margin-top: -25px;">Find people who need you. Heed the call. Get rewarded.</p>
-                <p class="col s12 light splash-header" style="font-size: 1.2rem; font-weight: normal; padding: 0 20%; margin-top: -5px;">Read about all open support request below. When you see one that you feel you can help with, click the button and you will get a phone number to call. You will be rewarded based on time spent and results.</p>
+                <p class="col s12 l12 m12 light splash-header" style="font-size: 1.2rem; font-weight: normal; padding: 0 20%; margin-top: -25px;">Find people who need you. Heed the call. Get rewarded.</p>
+                <p class="col s12 l12 m12 light splash-header" style="font-size: 1.2rem; font-weight: normal; padding: 0 20%; margin-top: -5px;">Read about all open support request below. When you see one that you feel you can help with, click the button and you will get a phone number to call. You will be rewarded based on time spent and results.</p>
             </div>
             <br><br>
         </div>
@@ -75,25 +75,22 @@
 </section>
 
 <script id="errand-template" type="text/x-handlebars-template">
-    <div class="col s6">
+    <div class="col s12 m12 l6">
         <div class="card" data-id="{{id}}">
             <div class="card-content">
                 <div class="row" style="margin-bottom: 0;">
-                    <div class="col s4">
+                    <div class="center col s12 m12 l4">
                         <img class="responsive-img wow bounceIn text-center" src="{{pic}}" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;">
                     </div>
-                    <div class="col s8">
-                        <div>
+                    <div class="col l8 m6 s10 offset-m3 offset-s1">
+                        <div class="col l12 m12 s12">
                             <span class="card-title black-text">{{title}}</span>
                         </div>
 
-                        <div>
-                            <audio class="text-center" controls="controls"><source src="/errands/{{id}}/recording.wav" type="audio/wav" preload="metadata"></audio>
-                        </div>
+                            <audio class="col l12 m12 s12" controls="controls"><source src="/errands/{{id}}/recording.wav" type="audio/wav" preload="metadata"></audio>
 
-                        <p><i>"{{description}}"</i></p>
-
-                        <div style="margin-top: 10px;">
+                        <p class="col l12 m12 s12"><i>"{{description}}"</i></p>
+                        <div class="col l12 s12 m12" style="margin-top: 10px;">
                             {{#each tags}}
                             <div class="chip" style="margin-bottom: 5px;">{{this}}</div>
                             {{/each}}
