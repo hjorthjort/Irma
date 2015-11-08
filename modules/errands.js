@@ -34,7 +34,8 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
 			user_age: age,
 			user_gravatar: gravatar,
 			completed: false,
-			taken: false
+			taken: false,
+			called: false
 		}, function (err, body) {
 			if (err) {
 				return callback(err);
@@ -119,6 +120,24 @@ exports.getAllCompleted = function (callback) {
 	});
 };
 
+exports.setCalled = function (id, callback) {
+	errands.get(id, function (err, body) {
+		if (err) {
+			return callback(err);
+		}
+
+		body.called = true;
+
+		errands.insert(body, function (err, body) {
+			if (err) {
+				return callback(err);
+			}
+
+			callback(null, body);
+		});
+	})
+};
+
 exports.take = function (id, callback) {
 	errands.get(id, function (err, body) {
 		if (err) {
@@ -144,6 +163,7 @@ exports.untake = function (id, callback) {
 		}
 
 		body.taken = false;
+		body.called = false;
 
 		errands.insert(body, function (err, body) {
 			if (err) {
