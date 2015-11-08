@@ -42,7 +42,7 @@ var users = [{
 }];
 
 users.forEach(function(user) {
-	request.post('localhost:6002/customers', {
+	request.post('http://localhost:6002/customers', {
 		form: user
 	});
 });
