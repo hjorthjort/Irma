@@ -179,8 +179,13 @@
             </div>
           </div>
           <div class="row">
-            <form action="/some_action" method="POST" class="klarna-form" data-api-key="test_my_api_key9" data-flow="registration" data-locale="sv">
+            <form action="/klarna/customer" method="POST" class="klarna-form" data-api-key="test_my_api_key9" data-flow="registration" data-locale="sv">
             </form>
+            <script>
+                onKlarnaSuccess = function (data) {
+                    console.log(data);
+                }
+            </script>
           </div>
         </div>
 
