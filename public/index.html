@@ -286,6 +286,18 @@
     <script src="js/creative.js"></script>
 
     <script>
+      var customer_form = $('#customer-form');
+      customer_form.submit(function (evt) {
+          var phoneField = $('#customer_phone_number').get(0);
+          var phoneNumber = phoneField.value;
+          if (!phoneNumber.match(/\+[0-9]+/)) {
+              Materialize.toast("Phone number must begin with a plus sign!", 4000);
+              return false;
+          } else {
+              return true;
+          }
+      });
+
       $('#experts').submit(function(evt){
         evt.preventDefault();
         console.log($(this).serialize());
