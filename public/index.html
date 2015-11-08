@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="start/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="start/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script async src="https://ondemand-dg.playground.klarna.com/web/js/sdk.min.js"></script>
 </head>
 <body>
 
@@ -130,47 +131,67 @@
     <div class="section" id="register">
 
       <div class="row">
-        <form class="col l4 m12 s12 offset-l1">
+        <div class="col l4 m12 s12 offset-l1">
+          <form action="/customers" method="POST" id="customer-form">
+            <div class="row">
+              <div class="col s12">
+                <h5>Customer</h5>
+                <p class="light">Are you in need of technical support? Are your children or grand children fed up with you calling them to help you with your mail? Or do you lose your password on a daily basis?</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="customer_name" name="customer_name" type="text" class="validate">
+                <label for="customer_name">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="customer_age" name="customer_age" type="text" class="validate">
+                <label for="customer_age">Age</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="customer_phone_number" name="customer_phone_number" type="tel" class="validate">
+                <label for="customer_phone_number">Phone Number</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="customer_email" name="customer_email" type="email" class="validate">
+                <label for="customer_email">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="customer_password" name="customer_password" type="password" class="validate">
+                <label for="customer_password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <p class="light">We use Klarna to process payments.</p>
+              </div>
+            </div>
+          </form>
           <div class="row">
-            <div class="col s12">
-              <h5>Customer</h5>
-              <p class="light">Are you in need of technical support? Are your children or grand children fed up with you calling them to help you with your mail? Or do you lose your password on a daily basis?</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="customer_name" type="text" class="validate">
-              <label for="customer_name">Name</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="customer_age" type="text" class="validate">
-              <label for="customer_age">Age</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="customer_phone_number" type="tel" class="validate">
-              <label for="customer_phone_number">Phone Number</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="customer_email" type="email" class="validate">
-              <label for="customer_email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="customer_password" type="password" class="validate">
-              <label for="customer_password">Password</label>
-            </div>
+            <form action="/klarna/customer" method="POST" class="klarna-form" data-api-key="test_my_api_key9" data-flow="registration" data-locale="sv">
+            </form>
           </div>
           <div class="row center">
             <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="hej">Register as a customer</button>
+              <button id="customer-submit-button" form="customer-form" class="btn waves-effect waves-light" type="submit" disabled>Register as a customer</button>
             </div>
           </div>
-        </form>
+          <script>
+              onKlarnaSuccess = function (data) {
+                  $("#customer-form").append(
+                      '<input type="hidden" name="customer_klarna_token" value="' + data.klarna_token + '" />'
+                  );
+                  $("#customer-submit-button").get(0).disabled = false;
+              };
+          </script>
+
+        </div>
 
         <form class="col l4 m12 s12 offset-l2" id="experts">
           <div class="row">
@@ -181,19 +202,19 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_name" name="expert_name" type="text" class="validate">
+              <input id="expert_name" name="expert_name" name="expert_name" type="text" class="validate">
               <label for="expert_name">Name</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_email" name="expert_email" type="email" class="validate">
+              <input id="expert_email" name="expert_email" name="expert_email" type="email" class="validate">
               <label for="expert_email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_password" name="expert_password" type="password" class="validate">
+              <input id="expert_password" name="expert_password" name="expert_password" type="password" class="validate">
               <label for="expert_password">Password</label>
             </div>
           </div>
