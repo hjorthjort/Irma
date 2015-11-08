@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="start/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="start/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <script async src="https://ondemand-dg.playground.klarna.com/web/js/sdk.min.js"></script>
+  <!--<script async src="https://ondemand-dg.playground.klarna.com/web/js/sdk.min.js"></script>-->
 </head>
 <body>
 <!-- Hide all content until window is fully loaded -->
@@ -193,29 +193,29 @@
                 <label for="customer_password">Password</label>
               </div>
             </div>
-            <div class="row">
-              <div class="col s12">
-                <p class="light">We use Klarna to process payments.</p>
-              </div>
-            </div>
+            <!--<div class="row">-->
+              <!--<div class="col s12">-->
+                <!--<p class="light">We use Klarna to process payments.</p>-->
+              <!--</div>-->
+            <!--</div>-->
           </form>
-          <div class="row">
-            <form action="/klarna/customer" method="POST" class="klarna-form" data-api-key="test_my_api_key9" data-flow="registration" data-locale="sv">
-            </form>
-          </div>
+          <!--<div class="row">-->
+            <!--<form action="/klarna/customer" method="POST" class="klarna-form" data-api-key="test_my_api_key9" data-flow="registration" data-locale="sv">-->
+            <!--</form>-->
+          <!--</div>-->
           <div class="row center">
             <div class="col s12">
-              <button id="customer-submit-button" form="customer-form" class="btn waves-effect waves-light" type="submit" disabled>Register as a customer</button>
+              <button id="customer-submit-button" form="customer-form" class="btn waves-effect waves-light" type="submit">Register as a customer</button>
             </div>
           </div>
-          <script>
-              onKlarnaSuccess = function (data) {
-                  $("#customer-form").append(
-                      '<input type="hidden" name="customer_klarna_token" value="' + data.klarna_token + '" />'
-                  );
-                  $("#customer-submit-button").get(0).disabled = false;
-              };
-          </script>
+          <!--<script>-->
+              <!--onKlarnaSuccess = function (data) {-->
+                  <!--$("#customer-form").append(-->
+                      <!--'<input type="hidden" name="customer_klarna_token" value="' + data.klarna_token + '" />'-->
+                  <!--);-->
+                  <!--$("#customer-submit-button").get(0).disabled = false;-->
+              <!--};-->
+          <!--</script>-->
 
         </div>
 
