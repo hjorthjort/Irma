@@ -93,7 +93,7 @@
 </div>
 <section id="errands_section" class="#f5f5f5 grey lighten-4">
     <div class="container" id="errands_list" style="padding-top: 10px;">
-        <div class="row" style="padding-bottom: 100px; margin-bottom: 0;">
+        <div id="errands_row" class="row" style="padding-bottom: 100px; margin-bottom: 0;">
             <div class="col s12 m12 l6" id="col-1">
 
             </div>
@@ -156,107 +156,112 @@
 </script>
 
 <script>
-    var source = $("#errand-template").html();
-    var template = Handlebars.compile(source);
+    if (document.cookie.indexOf("session") >= 0) {
+        var source = $("#errand-template").html();
+        var template = Handlebars.compile(source);
 
-    var errands = $.get("/errands", {}, function(errands) {
-        var cards = 0;
-	
-        errands.forEach(function(errand){
-            var title = errand.doc.user_name + ", " + errand.doc.user_age;
+        var errands = $.get("/errands", {}, function(errands) {
+            var cards = 0;
 
-            var context = {
-                title: title,
-                description: errand.doc.description,
-                id: errand.doc._id,
-                tags: errand.doc.tags,
-                phone: errand.doc.phone_number,
-                pic: "http://www.gravatar.com/avatar/"+errand.doc.user_gravatar+"?s=250",
-                taken: errand.doc.taken,
-                called: errand.doc.called
-            };
-            var html = template(context);
+            errands.forEach(function(errand){
 
-            if (cards % 2 == 0) {
-                $('#col-1').append(html);
-            } else {
-                $('#col-2').append(html);
-            }
+                var title = errand.doc.user_name + ", " + errand.doc.user_age;
 
-            cards++;
-        });
+                var context = {
+                    title: title,
+                    description: errand.doc.description,
+                    id: errand.doc._id,
+                    tags: errand.doc.tags,
+                    phone: errand.doc.phone_number,
+                    pic: "http://www.gravatar.com/avatar/"+errand.doc.user_gravatar+"?s=250",
+                    taken: errand.doc.taken,
+                    called: errand.doc.called
+                };
+                var html = template(context);
 
-        $('.help-button').click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+                if (cards % 2 == 0) {
+                    $('#col-1').append(html);
+                } else {
+                    $('#col-2').append(html);
+                }
 
-            var id = $(this).closest('.card').data('id');
-
-            $.ajax({
-                method: 'PUT',
-                url: '/errands/take/' + id
+                cards++;
             });
 
-            $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'inline');
-            $(this).closest('.card-action').find('.phone-button-wrapper').css('display', 'inline');
-            $(this).closest('.card-action').find('.help-button-wrapper').css('display', 'none');
-            $(this).closest('.card').addClass('teal lighten-4');
+            $('.help-button').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
 
-            return false;
-        });
+                var id = $(this).closest('.card').data('id');
 
-        $('.phone-button').click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+                $.ajax({
+                    method: 'PUT',
+                    url: '/errands/take/' + id
+                });
 
-            // send post to call path
-            var id = $(this).closest('.card').data('id');
-            var phoneNumber = $(this).data('phone');
+                $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'inline');
+                $(this).closest('.card-action').find('.phone-button-wrapper').css('display', 'inline');
+                $(this).closest('.card-action').find('.help-button-wrapper').css('display', 'none');
+                $(this).closest('.card').addClass('teal lighten-4');
 
-            $.post('/call/' + id + '/' + phoneNumber);
-
-            $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'inline');
-
-            return false;
-        });
-
-        $('.done-button').click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // send post put request to complete path
-            var id = $(this).closest('.card').data('id');
-
-            $.ajax({
-                method: 'PUT',
-                url: '/errands/complete/' + id
+                return false;
             });
 
-            $(this).closest('.card').remove();
+            $('.phone-button').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
 
-            return false;
-        });
+                // send post to call path
+                var id = $(this).closest('.card').data('id');
+                var phoneNumber = $(this).data('phone');
 
-        $('.put-back-button').click(function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+                $.post('/call/' + id + '/' + phoneNumber);
 
-            var id = $(this).closest('.card').data('id');
+                $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'inline');
 
-            $.ajax({
-                method: 'PUT',
-                url: '/errands/untake/' + id
+                return false;
             });
 
-            $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'none');
-            $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'none');
-            $(this).closest('.card-action').find('.phone-button-wrapper').css('display', 'none');
-            $(this).closest('.card-action').find('.help-button-wrapper').css('display', 'inline');
-            $(this).closest('.card').removeClass('teal lighten-4');
+            $('.done-button').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
 
-            return false;
+                // send post put request to complete path
+                var id = $(this).closest('.card').data('id');
+
+                $.ajax({
+                    method: 'PUT',
+                    url: '/errands/complete/' + id
+                });
+
+                $(this).closest('.card').remove();
+
+                return false;
+            });
+
+            $('.put-back-button').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var id = $(this).closest('.card').data('id');
+
+                $.ajax({
+                    method: 'PUT',
+                    url: '/errands/untake/' + id
+                });
+
+                $(this).closest('.card-action').find('.put-back-button-wrapper').css('display', 'none');
+                $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'none');
+                $(this).closest('.card-action').find('.phone-button-wrapper').css('display', 'none');
+                $(this).closest('.card-action').find('.help-button-wrapper').css('display', 'inline');
+                $(this).closest('.card').removeClass('teal lighten-4');
+
+                return false;
+            });
         });
-    });
+    } else {
+        $('#errands_row').append('<h3 class="center"> <a class="teal-text lighten-2" href="/#register">Register</a> or <a class="teal-text lighten-2" href="profile.html">login</a> to take on errands</h3>');
+    }
 </script>
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

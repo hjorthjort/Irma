@@ -17,6 +17,7 @@
         function login() {
             console.info($('#input'))
             if ($('#inputEmail').val() == "hjortr@student.chalmers.se" && $('#inputPassword').val() == "fakepass") {
+                $('#nav-left').append('<li id="nav-errands-big"><a href="errands.html">All errands</a></li>');
                 document.cookie = "session=true";
                 $('#login_form').fadeOut();
                 $('#profile').fadeIn();
@@ -68,9 +69,9 @@
 <!-- NAVBAR -->
 <nav class="navbar-fixed white" role="navigation">
     <div class="nav-wrapper container">
-        <ul class="left hide-on-med-and-down">
+        <ul id="nav-left" class="left hide-on-med-and-down">
             <li><a href="/"><i class="mdi-action-home"></i></a></li>
-            <li><a href="errands.html">All errands</a></li>
+            <li><a href="errands.html">All errands</a></lidd>
         </ul>
 
         <ul class="right hide-on-med-and-down">
@@ -85,6 +86,7 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
+
 
 <!-- Login form -->
 <div class="container" id="login_form" style="position: absolute; left: 20%; width: 60%">
@@ -195,6 +197,7 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
+
 
 <script id="taken-errand-template" type="text/x-handlebars-template">
     <li>
