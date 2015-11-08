@@ -1,288 +1,351 @@
 {
-"data": [
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-08T00:16:16.489000",
-"actions": [
-{
-"play": "http://irma.eu-gb.mybluemix.net/files/Irma.mp3",
-"result": "ok"
-},
-{
-"record": "http://irma.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-08T00:16:16.464000",
-"state": "success",
-"duration": 24,
-"id": "cf5f9c8c21b5afe90d4fb89af440d321e"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T23:09:13.745000",
-"actions": [
-{
-"record": "http://irma.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T23:09:13.714000",
-"state": "success",
-"duration": 18,
-"id": "cd6813df203508808ce41e1b03ff32773"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T23:07:45.876000",
-"actions": [
-{
-"record": "http://irma.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T23:07:45.849000",
-"state": "success",
-"duration": 5,
-"id": "c10e6a1bea01024272f4161b23bbf5a44"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T23:05:48.488000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T23:05:48.459000",
-"state": "success",
-"duration": 20,
-"id": "c64294f56ecf5fe589bc6809fae47c344"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T23:05:11.376000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T23:05:11.347000",
-"state": "success",
-"duration": 5,
-"id": "cabe91538092967c603aae261fbaf88b1"
-},
-{
-"direction": "incoming",
-"from": "+46763162240",
-"to": "+46766861042",
-"created": "2015-11-07T22:41:23.704000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T22:41:23.674000",
-"state": "success",
-"duration": 16,
-"id": "c11efcb11d03fbaf4dbc2c354fc469749"
-},
-{
-"direction": "incoming",
-"from": "+46763162240",
-"to": "+46766861042",
-"created": "2015-11-07T20:54:14.301000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T20:54:14.267000",
-"state": "success",
-"duration": 19,
-"id": "cbd00d83f453fcb82d7ea68c8bcf287fa"
-},
-{
-"direction": "incoming",
-"from": "+46763162240",
-"to": "+46766861042",
-"created": "2015-11-07T17:23:58.688000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T17:23:58.674000",
-"state": "success",
-"duration": 15,
-"id": "c1afbacbd3bec782259201c43cf159828"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T17:19:08.785000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T17:19:08.756000",
-"state": "success",
-"duration": 10,
-"id": "cd15d5cdd7f0f6a40265dfc54c345b480"
-},
-{
-"direction": "incoming",
-"from": "+46763162240",
-"to": "+46766861042",
-"created": "2015-11-07T17:18:33.777000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T17:18:33.763000",
-"state": "success",
-"duration": 11,
-"id": "cd5af201ab7f694e4a64d9f2b21282cb5"
-},
-{
-"direction": "incoming",
-"from": "+46763162240",
-"to": "+46766861042",
-"created": "2015-11-07T17:17:46.385000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T17:17:46.356000",
-"state": "success",
-"duration": 6,
-"id": "cb15aee857fb4ee973aa882841d073338"
-},
-{
-"direction": "incoming",
-"from": "+46763162240",
-"to": "+46766861042",
-"created": "2015-11-07T17:17:18.925000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T17:17:18.898000",
-"state": "success",
-"duration": 5,
-"id": "c4b19f1466614a920bd3cb5cb66691519"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T04:23:21.708000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T04:23:21.686000",
-"state": "success",
-"duration": 6,
-"id": "cbbf48b69490b9c2f40abac8d43f9f497"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T04:15:42.565000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T04:15:42.536000",
-"state": "success",
-"duration": 6,
-"id": "c9d362f6eb6b324733c0eb1965fccfca0"
-},
-{
-"direction": "incoming",
-"from": "+46702077140",
-"to": "+46766861042",
-"created": "2015-11-07T04:11:01.700000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T04:11:01.675000",
-"state": "success",
-"duration": 5,
-"id": "c395a8b5256962fedb03fc28a0298d493"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T03:02:37.588000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recordings",
-"result": "ok"
-}
-],
-"start": "2015-11-07T03:02:37.560000",
-"state": "success",
-"duration": 7,
-"id": "c146b2b21a2a4b6ed463243487a13530f"
-},
-{
-"direction": "incoming",
-"from": "+46730308425",
-"to": "+46766861042",
-"created": "2015-11-07T03:01:19.305000",
-"actions": [
-{
-"record": "http://irmajs.eu-gb.mybluemix.net/recording/",
-"result": "ok"
-}
-],
-"start": "2015-11-07T03:01:19.282000",
-"state": "success",
-"duration": 9,
-"id": "c6d0e11c2c416673917f168c6362d6aa5"
-},
-{
-"direction": "outgoing",
-"from": "+46730308425",
-"created": "2015-11-07T02:24:25.935000",
-"to": "+46730308425",
-"state": "busy",
-"id": "ccac6fa4c40d524ffcc3b9441a025e729"
-}
-]
+  "data": [
+    {
+      "direction": "incoming",
+      "from": "+46733094141",
+      "to": "+46766861042",
+      "created": "2015-11-08T01:05:21.661000",
+      "actions": [
+        {
+          "play": "http://irma.eu-gb.mybluemix.net/files/Irma.mp3",
+          "result": "badurl",
+          "why": "Could not retrieve any data from specified URL"
+        },
+        {
+          "record": "http://irma.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-08T01:05:21.633000",
+      "state": "success",
+      "duration": 9,
+      "id": "c54085ab28e74ee409633f71d01417d31"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46733094141",
+      "to": "+46766861042",
+      "created": "2015-11-08T01:03:57.484000",
+      "actions": [
+        {
+          "play": "http://irma.eu-gb.mybluemix.net/files/Irma.mp3",
+          "result": "badurl",
+          "why": "Could not retrieve any data from specified URL"
+        },
+        {
+          "record": "http://irma.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-08T01:03:57.452000",
+      "state": "success",
+      "duration": 5,
+      "id": "cf3ef8209ff07030ec34ab8941e86a218"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46733094141",
+      "to": "+46766861042",
+      "created": "2015-11-08T01:02:02.733000",
+      "actions": [
+        {
+          "play": "http://irma.eu-gb.mybluemix.net/files/Irma.mp3",
+          "result": "badurl",
+          "why": "Could not retrieve any data from specified URL"
+        },
+        {
+          "record": "http://irma.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-08T01:02:02.706000",
+      "state": "success",
+      "duration": 7,
+      "id": "c550ed50438d436c2e7cc3e9374bc6240"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-08T00:16:16.489000",
+      "actions": [
+        {
+          "play": "http://irma.eu-gb.mybluemix.net/files/Irma.mp3",
+          "result": "ok"
+        },
+        {
+          "record": "http://irma.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-08T00:16:16.464000",
+      "state": "success",
+      "duration": 24,
+      "id": "cf5f9c8c21b5afe90d4fb89af440d321e"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T23:09:13.745000",
+      "actions": [
+        {
+          "record": "http://irma.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T23:09:13.714000",
+      "state": "success",
+      "duration": 18,
+      "id": "cd6813df203508808ce41e1b03ff32773"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T23:07:45.876000",
+      "actions": [
+        {
+          "record": "http://irma.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T23:07:45.849000",
+      "state": "success",
+      "duration": 5,
+      "id": "c10e6a1bea01024272f4161b23bbf5a44"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T23:05:48.488000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T23:05:48.459000",
+      "state": "success",
+      "duration": 20,
+      "id": "c64294f56ecf5fe589bc6809fae47c344"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T23:05:11.376000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T23:05:11.347000",
+      "state": "success",
+      "duration": 5,
+      "id": "cabe91538092967c603aae261fbaf88b1"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46763162240",
+      "to": "+46766861042",
+      "created": "2015-11-07T22:41:23.704000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T22:41:23.674000",
+      "state": "success",
+      "duration": 16,
+      "id": "c11efcb11d03fbaf4dbc2c354fc469749"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46763162240",
+      "to": "+46766861042",
+      "created": "2015-11-07T20:54:14.301000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T20:54:14.267000",
+      "state": "success",
+      "duration": 19,
+      "id": "cbd00d83f453fcb82d7ea68c8bcf287fa"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46763162240",
+      "to": "+46766861042",
+      "created": "2015-11-07T17:23:58.688000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T17:23:58.674000",
+      "state": "success",
+      "duration": 15,
+      "id": "c1afbacbd3bec782259201c43cf159828"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T17:19:08.785000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T17:19:08.756000",
+      "state": "success",
+      "duration": 10,
+      "id": "cd15d5cdd7f0f6a40265dfc54c345b480"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46763162240",
+      "to": "+46766861042",
+      "created": "2015-11-07T17:18:33.777000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T17:18:33.763000",
+      "state": "success",
+      "duration": 11,
+      "id": "cd5af201ab7f694e4a64d9f2b21282cb5"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46763162240",
+      "to": "+46766861042",
+      "created": "2015-11-07T17:17:46.385000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T17:17:46.356000",
+      "state": "success",
+      "duration": 6,
+      "id": "cb15aee857fb4ee973aa882841d073338"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46763162240",
+      "to": "+46766861042",
+      "created": "2015-11-07T17:17:18.925000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T17:17:18.898000",
+      "state": "success",
+      "duration": 5,
+      "id": "c4b19f1466614a920bd3cb5cb66691519"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T04:23:21.708000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T04:23:21.686000",
+      "state": "success",
+      "duration": 6,
+      "id": "cbbf48b69490b9c2f40abac8d43f9f497"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T04:15:42.565000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T04:15:42.536000",
+      "state": "success",
+      "duration": 6,
+      "id": "c9d362f6eb6b324733c0eb1965fccfca0"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46702077140",
+      "to": "+46766861042",
+      "created": "2015-11-07T04:11:01.700000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T04:11:01.675000",
+      "state": "success",
+      "duration": 5,
+      "id": "c395a8b5256962fedb03fc28a0298d493"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T03:02:37.588000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recordings",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T03:02:37.560000",
+      "state": "success",
+      "duration": 7,
+      "id": "c146b2b21a2a4b6ed463243487a13530f"
+    },
+    {
+      "direction": "incoming",
+      "from": "+46730308425",
+      "to": "+46766861042",
+      "created": "2015-11-07T03:01:19.305000",
+      "actions": [
+        {
+          "record": "http://irmajs.eu-gb.mybluemix.net/recording/",
+          "result": "ok"
+        }
+      ],
+      "start": "2015-11-07T03:01:19.282000",
+      "state": "success",
+      "duration": 9,
+      "id": "c6d0e11c2c416673917f168c6362d6aa5"
+    },
+    {
+      "direction": "outgoing",
+      "from": "+46730308425",
+      "created": "2015-11-07T02:24:25.935000",
+      "to": "+46730308425",
+      "state": "busy",
+      "id": "ccac6fa4c40d524ffcc3b9441a025e729"
+    }
+  ]
 }
