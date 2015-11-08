@@ -21,11 +21,11 @@ router.post('/:number', function(req, res, next) {
 
     console.log('call', param);
 
-    //request.post('https://api.46elks.com/a1/Calls', param, function (err, httpResponse, body) {
-    //    if (err) {
-    //        console.log(err);
-    //    }
-    //}).auth(username, password, false);
+    request.post('https://api.46elks.com/a1/Calls', param, function (err, httpResponse, body) {
+        if (err) {
+            console.log(err);
+        }
+    }).auth(username, password, false);
 
     res.json({});
 });
