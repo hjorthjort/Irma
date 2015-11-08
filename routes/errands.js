@@ -13,6 +13,26 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/taken', function(req, res, next) {
+    errands.getAllTaken(function (err, result) {
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
+router.get('/completed', function(req, res, next) {
+    errands.getAllCompleted(function (err, result) {
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
 router.get('/:id/recording.wav', function(req, res, next) {
     errands.getRecording(req.params.id).pipe(res);
 });
@@ -41,10 +61,49 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.put('/take/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    errands.take(id, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
+router.put('/untake/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    errands.untake(id, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
 router.put('/complete/:id', function (req, res, next) {
     var id = req.params.id;
 
     errands.complete(id, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
+router.put('/called/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    errands.setCalled(id, function (err, result) {
         if (err) {
             console.log(err);
             return res.status(500).json(err);

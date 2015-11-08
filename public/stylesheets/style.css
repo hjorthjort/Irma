@@ -1,3 +1,5 @@
+#cover {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #F1F1F1; z-index:99;}
+
 .videoPlayer {
     background-color: hsla(0,0%,0%,.75);
     background-image: linear-gradient(hsla(0,0%,100%,0), hsla(0,0%,100%,.025) 50%, transparent 50%, hsla(0,0%,0%,.1));

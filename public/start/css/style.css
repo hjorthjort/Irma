@@ -1,3 +1,4 @@
+#cover {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #F1F1F1; z-index:99;}
 /* Custom Stylesheet */
 /**
  * Use this file to override Materialize files so you can update
@@ -31,7 +32,7 @@ p {
 
 .parallax-container {
   min-height: 380px;
-  line-height: 0;
+  line-height: 0.5;
   height: auto;
   color: rgba(255,255,255,.9);
 }

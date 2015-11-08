@@ -9,15 +9,68 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="start/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="start/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <!-- Handlebars templating -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
+    <script>
+        function login() {
+            console.info($('#input'))
+            if ($('#inputEmail').val() == "hjortr@student.chalmers.se" && $('#inputPassword').val() == "fakepass") {
+                document.cookie = "session=true";
+                $('#login_form').fadeOut();
+                $('#profile').fadeIn();
+            } else {
+                if ($('#inputEmail').val() == "hjortr@student.chalmers.se") {
+                    $('#error_message').hide();
+                    $('#error_message2').fadeIn();
+                } else {
+                    $('#error_message2').hide();
+                    $('#error_message').fadeIn();
+                }
+            }
+            return false;
+        }
+
+        function logout() {
+            console.info("ksadfaskjf");
+            document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+        }
+    </script>
 </head>
 <body>
 
+
+<!-- Hide all content until window is fully loaded -->
+<div id="cover">
+    <div class="row center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- NAVBAR -->
-<nav class="white" role="navigation">
+<nav class="navbar-fixed white" role="navigation">
     <div class="nav-wrapper container">
-        <ul class="left hide-on-med-and-down">
+        <ul id="nav-left" class="left hide-on-med-and-down">
             <li><a href="/"><i class="mdi-action-home"></i></a></li>
-            <li><a href="errands.html">All errands</a></li>
+            <li><a href="errands.html">All errands</a></lidd>
         </ul>
 
         <ul class="right hide-on-med-and-down">
@@ -33,165 +86,198 @@
     </div>
 </nav>
 
-<!-- header -->
-<header class="teal lighten-2">
-    <div class="row center">
-        <div class="col s12 center">
-            <h2 class="white-text">My Profile</h2>
-        </div>
-    </div>
-</header>
-<!--Suggested task -->
 
-<div class="container">
-    <!-- card -->
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="card teal lighten-2">
-                <div class="card-content white-text">
-                    <div class="col s12 m12 center">
-                        <h5 class="text-lighten-1">Hi Rikard, could you help us out by taking on this errand?</h5>
-                        <hr class="white-text center" width="20%">
+<!-- Login form -->
+<div class="container" id="login_form" style="position: absolute; left: 20%; width: 60%">
+    <form class="form_signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <p id="error_message" class="text-darken-2" style="color: red; display: none">No such user.</p>
+        <p id="error_message2" class="text-darken-2" style="color: red; display: none">The e-mail and password don't match.</p>
+        <label for="inputEmail" class="sr-only">E-mail</label>
+        <input type="tel" id="inputEmail" name="email" class="form-control" placeholder="my_mail@example.com" value="hjortr@student.chalmers.se" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" value="fakepass" required>
+        <button type="button" class="btn btn-lg btn-primary btn-block" onclick="return login()">Sign in</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+<div id="profile" style="display: none ">
+    <!-- header -->
+    <header class="teal lighten-2">
+        <div class="row center">
+            <div class="col l12 m12 s12 center">
+                <h2 class="white-text">My Profile</h2>
+            </div>
+        </div>
+    </header>
+    <!--Suggested task -->
+
+    <div class="container">
+        <!-- card -->
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card teal lighten-2">
+                    <div class="card-content white-text">
+                        <div class="col s12 m12 center">
+                            <h5 class="text-lighten-1">Hi Rikard, could you help us out by taking on this errand?</h5>
+                            <hr class="white-text center" width="20%">
+                        </div>
+                        <div class="col l3 m4 s12 center">
+                            <img src="http://lorempixel.com/150/150/people/1" style="width:100%; max-width: 200px;">
+                        </div>
+                        <div class="col l9 m8">
+                            <span class="card-title">Sara, 22</span>
+                            <p>"I am having problem with my windows, it starts but I can't open any programs. I want to open a document, but I click word and nothing happens. It started yesterday after I tried to get into Facebook and the computer got really slow."</p>
+                            <p style="margin-top: 10px;">
+                            <div class="chip" style="margin-bottom: 0.2em">windows</div>
+                            <div class="chip" style="margin-bottom: 0.2em">word</div>
+                            <div class="chip" style="margin-bottom: 0.2em">office</div>
+                            <div class="chip" style="margin-bottom: 0.2em">facebook</div>
+                            </p>
+                        </div>
                     </div>
-                    <div class="col s2">
-                        <img src="http://lorempixel.com/150/150/people/3">
+                    <div class="card-action right">
+                        <div class="btn grey lighten-3 waves-effect waves-teal z-depth-0" style="margin-bottom: 0.5em"><a href="#" style="color:#0d47a1"><i class="mdi-action-done"></i> I can do it!</a></div>
+                        <div class="btn grey lighten-3 waves-effect waves-teal z-depth-0" style="margin-bottom: 0.5em"><a href="#" style="color:#0d47a1"><i class="mdi-content-clear"></i> Give it to someone else.</a></div>
                     </div>
-                    <div class="col s10">
-                        <span class="card-title">Robert, 59</span>
-                        <p>"I am having problem with my windows, it starts but I can't open any programs. I want to open a document, but I click word and nothing happens. It started yesterday after I tried to get into Facebook and the computer got really slow."</p>
-                        <p>
-                        <div class="chip">windows</div>
-                        <div class="chip">word</div>
-                        <div class="chip">office</div>
-                        <div class="chip">facebook</div>
-                        </p>
-                    </div>
-                </div>
-                <div class="card-action right">
-                    <div class="btn grey lighten-3 waves-effect waves-teal z-depth-0"><a href="#" style="color:#0d47a1"><i class="mdi-action-done"></i> I can do it!</a></div>
-                    <div class="btn grey lighten-3 waves-effect waves-teal z-depth-0"><a href="#" style="color:#0d47a1"><i class="mdi-content-clear"></i> Give it to someone else.</a></div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--Main dashboard -->
-<div class="container">
-    <div class="row">
-        <!-- Profile image -->
-        <div class="col s3">
-                <div class="col s12 m12">
+    <!--Main dashboard -->
+    <div class="container">
+        <div class="row">
+            <!-- Profile image -->
+            <div class="col l3 m12 s12">
+                <div class="col s12 m12 l12">
                     <div class="card white darken-1">
-                            <img width="100%" src="https://a1.muscache.com/ac/users/35410798/profile_pic/1433881752/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70">
-                            <div class="col s12 center">
-                                <h4 >Rikard</h4>
-                                <i class="small mdi-toggle-star"></i>
-                                <i class="small mdi-toggle-star"></i>
-                                <i class="small mdi-toggle-star"></i>
-                                <i class="small mdi-toggle-star"></i>
-                                <i class="small mdi-toggle-star-half"></i>
-                                <div class="card-action">
-                                    <a href="#" class="teal-text">Edit profile</a>
-                                </div>
+                        <img width="100%" src="https://a1.muscache.com/ac/users/35410798/profile_pic/1433881752/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70">
+                        <div class="col l12 m12 s12 center">
+                            <h4 >Rikard</h4>
+                            <i class="small mdi-toggle-star"></i>
+                            <i class="small mdi-toggle-star"></i>
+                            <i class="small mdi-toggle-star"></i>
+                            <i class="small mdi-toggle-star"></i>
+                            <i class="small mdi-toggle-star-half"></i>
+                            <div class="card-action">
+                                <a href="#" class="teal-text" style="margin-right: 0;">Edit profile</a>
                             </div>
+                            <div class="card-action" onclick="logout()">
+                                <a href="/" class="teal-text" style="margin-right: 0;">Logout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-        </div>
-        <!-- My errands -->
-        <div class="col s9">
-            <h4 class="center" style="margin-bottom: 1em">My current errands</h4>
-            <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">phone_paused</i>Anne, 63 &nbsp;&nbsp;
-                        <div class="right">
-                            <div class="chip">wifi</div>
-                            <div class="chip">network</div>
-                            <div class="chip">browser</div>
-                            <div class="chip">internet</div>
-                        </div>
-                    </div>
-                    <div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">phone_paused</i>Rosemarie, 51 &nbsp;&nbsp;
-                        <div class="right">
-                            <div class="chip">mac</div>
-                            <div class="chip">booting</div>
-                            <div class="chip">install</div>
-                        </div>
-                    </div>
-                    <div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">phone_paused</i>John, 63 &nbsp;&nbsp;
-                        <div class="right">
-                            <div class="chip">upload</div>
-                            <div class="chip">facebook</div>
-                            <div class="chip">photo</div>
-                            <div class="chip">kids</div>
-                            <div class="chip">freeze</div>
-                        </div>
-                    </div>
-                    <div class="collapsible-body"><h5 class="center teal-text">+49 022 15 74 022</h5><p>"I tried to access the internet but it says can't find page. I want to listen to a radio program bit the computer says it's a problem with the wifi."</p></div>
-                </li>
-            </ul>
-        </div>
-        <!-- Salary -->
-        <div class="col s9" style="margin-top: 2em;">
-            <h4 class="center" style="margin-bottom: 1em;">Salary</h4>
-            <ul class="collection with-header z-depth-1">
-                <li class="collection-item"><h3 class="center teal-text">$69.74</h3><h5 class="center teal-text">this month</h5></li>
-                <li class="collection-item"><i class="tiny mdi-action-done"></i> Annelie, 39
-                    <div class="right">
-                        <div class="teal-text" style="font-weight: bold">$19.03</div>
-                    </div>
-                </li>
-                <li class="collection-item"><i class="tiny mdi-action-done"></i> Ingrid, 77
-                    <div class="right">
-                        <div class="teal-text" style="font-weight: bold">$10.30</div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                        <i class="tiny mdi-action-done"></i> Robin, 32
-                    <div class="right">
-                        <div class="teal-text" style="font-weight: bold">$29.87</div>
-                    </div>
-                </li>
-                <li class="collection-item"><i class="tiny mdi-action-done"></i> Ingrid, 77
-                    <div class="right">
-                        <div class="teal-text" style="font-weight: bold">$6.18</div>
-                    </div>
-                </li>
-                <li class="collection-item"><i class="tiny mdi-action-done"></i> Jan, 61
-                    <div class="right">
-                        <div class="teal-text" style="font-weight: bold">$4.36</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div> <!-- End row -->
-</div>
+            </div>
 
+            <!-- My errands -->
+            <div class="col l9 m12 s12">
+                <h4 class="center" style="margin-bottom: 1em">My current errands</h4>
+                <ul class="collapsible" data-collapsible="accordion" id="taken-errands">
+
+                </ul>
+            </div>
+            <!-- Salary -->
+            <div class="col l9 s12" style="margin-top: 2em;">
+                <h4 class="center" style="margin-bottom: 1em;">Salary</h4>
+                <ul class="collection with-header z-depth-1" id="completed-errands">
+                    <li class="collection-item"><h3 class="center teal-text" id="total-price">$0.00</h3><h5 class="center teal-text">this month</h5></li>
+
+                </ul>
+            </div>
+        </div> <!-- End row -->
+    </div>
+</div> <!-- End user profile -->
 
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script id="taken-errand-template" type="text/x-handlebars-template">
+    <li>
+        <div class="collapsible-header"><i class="material-icons">phone_paused</i>{{name}}, {{age}} &nbsp;&nbsp;
+            <div class="right hide-on-small-and-down">
+                {{#each tags}}
+                <div class="chip">{{this}}</div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="collapsible-body">
+            <p><i>"{{description}}"</i></p>
+        </div>
+    </li>
+</script>
 
-<!-- Plugin JavaScript -->
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.fittext.js"></script>
-<script src="js/wow.min.js"></script>
+<script id="completed-errand-template" type="text/x-handlebars-template">
+    <li class="collection-item"><i class="tiny mdi-action-done"></i> {{name}}, {{age}}
+        <div class="right">
+            <div class="teal-text" style="font-weight: bold">${{price}}</div>
+        </div>
+    </li>
+</script>
 
-<!-- Custom Theme JavaScript -->
-<script src="js/creative.js"></script>
+<script>
+    var takenSource = $("#taken-errand-template").html();
+    var takenTemplate = Handlebars.compile(takenSource);
+
+    $.get("/errands/taken", {}, function(errands) {
+        errands.forEach(function (errand) {
+            var context = {
+                name: errand.doc.user_name,
+                age: errand.doc.user_age,
+                description: errand.doc.description,
+                tags: errand.doc.tags,
+                phone: errand.doc.phone_number
+            };
+
+            var html = takenTemplate(context);
+
+            $('#taken-errands').append(html);
+        });
+
+        $('.collapsible').collapsible();
+    });
+
+    var completedSource = $("#completed-errand-template").html();
+    var completedTemplate = Handlebars.compile(completedSource);
+
+    $.get("/errands/completed", {}, function(errands) {
+        var total = 0;
+
+        errands.forEach(function (errand) {
+            var random = Math.round(((Math.random() + 0.25) * 10) * 100) / 100;
+            total = total + random;
+
+            var context = {
+                name: errand.doc.user_name,
+                age: errand.doc.user_age,
+                price: random
+            };
+
+            var html = completedTemplate(context);
+
+            $('#completed-errands').append(html);
+        });
+
+        $('#total-price').html('$' + Math.round(total * 100) / 100);
+    });
+</script>
+
+<!-- Remove hiding div -->
+<script>
+    $(window).on('load', function() {
+        if (document.cookie.indexOf("session") >= 0) {
+            $('#login_form').hide();
+            $('#profile').show();
+        }
+        $("#cover").fadeOut(600);
+    });
+</script>
 
 </body>
 </html>

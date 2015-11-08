@@ -4,19 +4,48 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>Irma: Friendly and fast tech support</title>
-
+  <link rel="icon"
+        type="image/png"
+        href="/img/favicon.png">
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="start/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="start/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!--<script async src="https://ondemand-dg.playground.klarna.com/web/js/sdk.min.js"></script>-->
 </head>
 <body>
+<!-- Hide all content until window is fully loaded -->
+<div id="cover">
+    <div class="row center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<nav class="white" role="navigation">
+
+<!-- Navbar -->
+
+<nav class="navbar-fixed white" role="navigation">
     <div class="nav-wrapper container">
-        <ul class="left hide-on-med-and-down">
-            <li><a href="/"><i class="mdi-action-home"></i></a></li>
-            <li><a href="errands.html">All errands</a></li>
+        <ul id="nav-left" class="left hide-on-med-and-down">
+          <li><a href="/"><i class="mdi-action-home"></i></a></li>
+          <li><a href="errands.html">All errands</a></li>
         </ul>
 
         <ul class="right hide-on-med-and-down">
@@ -25,7 +54,7 @@
 
         <ul id="nav-mobile" class="side-nav">
             <li><a href="/"><i class="mdi-action-home"></i></a></li>
-            <li><a href="errands.html">All errands</a></li>
+          <li><a href="errands.html">All errands</a></li>
             <li><a href="profile.html">My Profile</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -34,7 +63,6 @@
 
   <div class="row no-pad-top" >
     <div id="index-banner" class="parallax-container">
-      <div class="section no-pad-bot">
         <div class="container">
           <br><br>
           <div class="row center">
@@ -46,7 +74,6 @@
           </div>
           <br><br>
         </div>
-      </div>
       <div class="parallax"><img src="img/background1.jpg" alt="Unsplashed background img 1"></div>
     </div>
   </div>
@@ -57,7 +84,7 @@
 
       <!--   Icon Section   -->
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col l4 s12 m8 offset-m2">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
             <h5 class="center">Tech made easy</h5>
@@ -66,16 +93,19 @@
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col l4 s12 m8 offset-m2">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">phone</i></h2>
             <h5 class="center">One number for everything</h5>
             <p class="light">Whatever problem you are having, all you have to do is call our number. Tell us what is the matter, and one of our experts will call you back. You pay based on time and results.</p>
-              <div class="center"><h6 class="chip phone">+46 766 86 10 42</h6></div>
+              <div class="center">
+                <h6 class="chip phone"><a class="black-text" href="+46766861042">+46 766 86 10 42</a></h6>
+                <h6 class="chip phone"><a class="black-text" href="+3584573963485">+358 45 739 63 485</a></h6>
+              </div>
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col l4 s12 m8 offset-m2">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
             <h5 class="center">Experienced tech experts</h5>
@@ -130,49 +160,69 @@
     <div class="section" id="register">
 
       <div class="row">
-        <form class="col s4 offset-s1">
-          <div class="row">
-            <div class="col s12">
-              <h5>Customer</h5>
-              <p class="light">Are you in need of technical support? Are your children or grand children fed up with you calling them to help you with your mail? Or do you lose your password on a daily basis?</p>
+        <div class="col l4 m12 s12 offset-l1">
+          <form action="/customers" method="POST" id="customer-form">
+            <div class="row">
+              <div class="col s12">
+                <h5>Customer</h5>
+                <p class="light">Are you in need of technical support? Are your children or grand children fed up with you calling them to help you with your mail? Or do you lose your password on a daily basis?</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="customer_name" type="text" class="validate">
-              <label for="customer_name">Name</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="customer_name" name="customer_name" type="text" class="validate">
+                <label for="customer_name">Name</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="customer_age" type="text" class="validate">
-              <label for="customer_age">Age</label>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="customer_age" name="customer_age" type="text" class="validate">
+                <label for="customer_age">Age</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="customer_phone_number" name="customer_phone_number" type="tel" class="validate">
+                <label for="customer_phone_number">Phone Number</label>
+              </div>
             </div>
-            <div class="input-field col s6">
-              <input id="customer_phone_number" type="tel" class="validate">
-              <label for="customer_phone_number">Phone Number</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="customer_email" name="customer_email" type="email" class="validate">
+                <label for="customer_email">Email</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="customer_email" type="email" class="validate">
-              <label for="customer_email">Email</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="customer_password" name="customer_password" type="password" class="validate">
+                <label for="customer_password">Password</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="customer_password" type="password" class="validate">
-              <label for="customer_password">Password</label>
-            </div>
-          </div>
+            <!--<div class="row">-->
+              <!--<div class="col s12">-->
+                <!--<p class="light">We use Klarna to process payments.</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          </form>
+          <!--<div class="row">-->
+            <!--<form action="/klarna/customer" method="POST" class="klarna-form" data-api-key="test_my_api_key9" data-flow="registration" data-locale="sv">-->
+            <!--</form>-->
+          <!--</div>-->
           <div class="row center">
             <div class="col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="hej">Register as a customer</button>
+              <button id="customer-submit-button" form="customer-form" class="btn waves-effect waves-light" type="submit">Register as a customer</button>
             </div>
           </div>
-        </form>
+          <!--<script>-->
+              <!--onKlarnaSuccess = function (data) {-->
+                  <!--$("#customer-form").append(-->
+                      <!--'<input type="hidden" name="customer_klarna_token" value="' + data.klarna_token + '" />'-->
+                  <!--);-->
+                  <!--$("#customer-submit-button").get(0).disabled = false;-->
+              <!--};-->
+          <!--</script>-->
 
-        <form class="col s4 offset-s2" id="experts">
+        </div>
+
+        <form class="col l4 m12 s12 offset-l2" id="experts">
           <div class="row">
             <div class="col s12">
               <h5>Expert</h5>
@@ -181,19 +231,19 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_name" name="expert_name" type="text" class="validate">
+              <input id="expert_name" name="expert_name" name="expert_name" type="text" class="validate">
               <label for="expert_name">Name</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_email" name="expert_email" type="email" class="validate">
+              <input id="expert_email" name="expert_email" name="expert_email" type="email" class="validate">
               <label for="expert_email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="expert_password" name="expert_password" type="password" class="validate">
+              <input id="expert_password" name="expert_password" name="expert_password" type="password" class="validate">
               <label for="expert_password">Password</label>
             </div>
           </div>
@@ -229,21 +279,25 @@
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
     <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
     <script src="js/wow.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
 
     <script>
+      var customer_form = $('#customer-form');
+      customer_form.submit(function (evt) {
+          var phoneField = $('#customer_phone_number').get(0);
+          var phoneNumber = phoneField.value;
+          if (!phoneNumber.match(/\+[0-9]+/)) {
+              Materialize.toast("Phone number must begin with a plus sign!", 4000);
+              return false;
+          } else {
+              return true;
+          }
+      });
+
       $('#experts').submit(function(evt){
         evt.preventDefault();
         console.log($(this).serialize());
@@ -251,5 +305,11 @@
       })
     </script>
 
+<!-- Remove hiding div -->
+<script>
+    $(window).on('load', function() {
+        $("#cover").fadeOut(600);
+    });
+</script>
   </body>
 </html>
