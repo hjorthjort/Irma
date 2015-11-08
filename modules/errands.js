@@ -60,23 +60,43 @@ exports.get = function (id, callback) {
 };
 
 exports.getAll = function (callback) {
-    errands.list({include_docs: true}, function (err, result) {
-        if (err) {
-            return callback(err);
-        }
+	errands.list({include_docs: true}, function (err, result) {
+		if (err) {
+			return callback(err);
+		}
 
-        var filteredResult = result.rows.filter(function (errand) {
-            if (errand.doc.completed === true) {
-                return false;
-            } else {
-                return true;
-            }
-        });
+		var filteredResult = result.rows.filter(function (errand) {
+			if (errand.doc.completed === true) {
+				return false;
+			} else {
+				return true;
+			}
+		});
 
-        console.log(filteredResult);
+		console.log(filteredResult);
 
-        callback(null, filteredResult);
-    });
+		callback(null, filteredResult);
+	});
+};
+
+exports.getAllTaken = function (callback) {
+	errands.list({include_docs: true}, function (err, result) {
+		if (err) {
+			return callback(err);
+		}
+
+		var filteredResult = result.rows.filter(function (errand) {
+			if (errand.doc.taken === true && errand.doc.completed === false) {
+				return true;
+			} else {
+				return false;
+			}
+		});
+
+		console.log(filteredResult);
+
+		callback(null, filteredResult);
+	});
 };
 
 exports.take = function (id, callback) {

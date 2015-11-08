@@ -13,6 +13,16 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/taken', function(req, res, next) {
+    errands.getAllTaken(function (err, result) {
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
 router.get('/:id/recording.wav', function(req, res, next) {
     errands.getRecording(req.params.id).pipe(res);
 });
