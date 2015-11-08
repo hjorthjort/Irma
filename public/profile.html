@@ -12,11 +12,21 @@
 
     <script>
         function login() {
-            $('#login_form').fadeOut();
-            $('#profile').fadeIn();
+            console.info($('#input'))
+            if ($('#inputEmail').val() == "hjortr@student.chalmers.se" && $('#inputPassword').val() == "fakepass") {
+                sessionStorage.setItem("logged_in", true);
+                $('#login_form').fadeOut();
+                $('#profile').fadeIn();
+            } else {
+                if ($('#inputEmail').val() == "hjortr@student.chalmers.se") {
+                    $('#error_message').hide();
+                    $('#error_message2').fadeIn();
+                } else {
+                    $('#error_message2').hide();
+                    $('#error_message').fadeIn();
+                }
+            }
             return false;
-//            document.getElementById('login_form').style.display = 'none';
-//            document.getElementById('profile').style.removeProperty('display');
         }
     </script>
 </head>
@@ -69,18 +79,20 @@
 
 <!-- Login form -->
 <div class="container" id="login_form" style="position: absolute; left: 20%; width: 60%">
-    <form onsubmit="return login()" class="form-signin">
+    <form class="form_signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <p id="error_message" class="text-darken-2" style="color: red; display: none">No such user.</p>
+        <p id="error_message2" class="text-darken-2" style="color: red; display: none">The e-mail and password don't match.</p>
+        <label for="inputEmail" class="sr-only">E-mail</label>
+        <input type="tel" id="inputEmail" name="email" class="form-control" placeholder="my_mail@example.com" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button type="button" class="btn btn-lg btn-primary btn-block" onclick="return login()">Sign in</button>
     </form>
 
 </div> <!-- /container -->
@@ -228,7 +240,6 @@
     </div>
 </div> <!-- End user profile -->
 
-
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
@@ -237,6 +248,10 @@
 <!-- Remove hiding div -->
 <script>
     $(window).on('load', function() {
+        if (sessionStorage.getItem("logged_in")) {
+            $('#login_form').hide();
+            $('#profile').show();
+        }
         $("#cover").fadeOut(600);
     });
 </script>
