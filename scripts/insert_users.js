@@ -17,7 +17,7 @@ var users = [{
 {
 	customer_name: 'Rikard',
 	customer_age: 24,
-	customer_phone_number: '+46730308425',
+	customer_phone_number: '+46763162240',
 	customer_email: 'benparad@hotmail.com',
 	customer_klarna_token: '1',
 	customer_password: '1'
@@ -25,7 +25,7 @@ var users = [{
 {
 	customer_name: 'Mats',
 	customer_age: 22,
-	customer_phone_number: '+46763162240',
+	customer_phone_number: '+46730308425',
 	customer_email: 'mats@hgbrg.se',
 	customer_klarna_token: '1',
 	customer_password: '1'
