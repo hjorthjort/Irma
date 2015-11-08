@@ -215,9 +215,19 @@
                 var id = $(this).closest('.card').data('id');
                 var phoneNumber = $(this).data('phone');
 
-                $.post('/call/' + id + '/' + phoneNumber);
+                if ($(this).closest('.card-action').find('.done-button-wrapper').css('display') !== 'none') {
+                    $.post('/call/' + phoneNumber);
+                    return false;
+                }
+
+                $.ajax({
+                    method: 'PUT',
+                    url: '/errands/called/' + id
+                });
 
                 $(this).closest('.card-action').find('.done-button-wrapper').css('display', 'inline');
+
+                $(this).data('called', '1');
 
                 return false;
             });

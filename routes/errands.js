@@ -100,4 +100,17 @@ router.put('/complete/:id', function (req, res, next) {
     });
 });
 
+router.put('/called/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    errands.setCalled(id, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+    });
+});
+
 module.exports = router;

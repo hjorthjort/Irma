@@ -33,7 +33,7 @@ function cleanup(pathToRecording) {
 }
 
 router.post('/', function(req, res, next) {
-    console.log('body', req.body);
+    console.log('recording', req.body);
 
     // get post parameters
     var from = req.body.from;
