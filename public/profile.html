@@ -12,8 +12,11 @@
 
     <script>
         function login() {
-            document.getElementById('login_form').style.display = 'none';
-            document.getElementById('profile').style.removeProperty('display');
+            $('#login_form').fadeOut();
+            $('#profile').fadeIn();
+            return false;
+//            document.getElementById('login_form').style.display = 'none';
+//            document.getElementById('profile').style.removeProperty('display');
         }
     </script>
 </head>
@@ -65,8 +68,8 @@
 </nav>
 
 <!-- Login form -->
-<div class="container" id="login_form">
-    <form onsubmit="login()" class="form-signin">
+<div class="container" id="login_form" style="position: absolute; left: 20%; width: 60%">
+    <form onsubmit="return login()" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
@@ -230,20 +233,6 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
 <script src="js/init.js"></script>
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="js/jquery.easing.min.js"></script>
-<script src="js/jquery.fittext.js"></script>
-<script src="js/wow.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="js/creative.js"></script>
 
 <!-- Remove hiding div -->
 <script>
