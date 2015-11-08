@@ -34,7 +34,7 @@ exports.speech_to_text = function (filename, callback) {
             return result.alternatives[0].transcript;
         }).join("").trim();
 
-        transcript = transcript.replace('%HESITATION ', '', 'g');
+        transcript = transcript.replace(/%HESITATION /g, '');
 
         callback(null, transcript);
     });
