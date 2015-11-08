@@ -12,6 +12,32 @@
   <script async src="https://ondemand-dg.playground.klarna.com/web/js/sdk.min.js"></script>
 </head>
 <body>
+<!-- Hide all content until window is fully loaded -->
+<div id="cover">
+    <div class="row center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Navbar -->
 
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
@@ -270,5 +296,11 @@
       })
     </script>
 
+<!-- Remove hiding div -->
+<script>
+    $(window).on('load', function() {
+        $("#cover").hide();
+    });
+</script>
   </body>
 </html>
