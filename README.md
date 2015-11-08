@@ -6,7 +6,7 @@ Friendly technical support. At every hour. For any issue.
 Need help? Irma is all the technical support you need in one phone number.
 ----------------------------------------------------------
 
-Call Irma at **+46 766 86 10 42** or **+358 45 739 63 485** (costs like a regular phone call) and explain your issue. We will hand your errand to one of our technical experts who will call you back to solve your problem. Call as many times as you like. We will bill you at the end of the month.
+Call Irma at **+46 766 86 10 42** or **+358 45 739 63 485** (costs like a regular phone call) and explain your issue. We will hand your support ticket to one of our technical experts who will call you back to solve your problem. Call as many times as you like. We will bill you at the end of the month.
 
 ### How to get your own personal technical support today
 
@@ -26,12 +26,12 @@ By becoming a part of the Irma Expert team you can get paid by solving the probl
 ### How do I do it?
 
 1. Go to [www.irma-helps.xyz](http://www.irma-helps.xyz/). Click "Get Started" and register as an expert.
-1. Go to "All errands" and browse open issues. Read the transcripts, browse the tags, and listen to the customers' own recordings.
+1. Go to "All support tickets" and browse open issues. Read the transcripts, browse the tags, and listen to the customers' own recordings.
 1. When you find an issue to work on, click "I'll help!". Then click "Call customer" to initiate a phone call.
 1. When the issue is resolved, click "Done".
 1. If you want to drop an issue for another expert to pick it up, click "Put back".
 
-Under "My Profile" you can keep track of errands that you have taken on yet to be resoved and see your finished errands that add up to your salary.
+Under "My Profile" you can keep track of support tickets that you have taken on yet to be resoved and see your finished support tickets that add up to your salary.
 
 **Always be your best self** – high customer rating means high salary! Experts who receive positive reviews will have bonuses added to their salary. The higher the rating, the more the money!
 
