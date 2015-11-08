@@ -4,7 +4,7 @@ var router = express.Router();
 router.post('/customer', function (req, res, next) {
     res.json({
         data: {
-            user_token: req.body.userToken
+            klarna_token: req.body.userToken
         }
     });
 });
