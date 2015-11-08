@@ -17,6 +17,9 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
 		if(result.length > 0) {
 			name = result[0].name;
 			age = result[0].age;
+		} else {
+			console.log('No user with phone number '+phone_number);
+			return callback('No user with phone number '+phone_number);
 		}
 		
 		errands.insert({
