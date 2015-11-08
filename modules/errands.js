@@ -1,6 +1,7 @@
 var exports = {};
 
 var fs = require('fs');
+var md5 = require('md5');
 var customers = require('./customers');
 
 var db = require('./db');
@@ -14,9 +15,11 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
 		
 		name = '';
 		age = '';
+		gravatar = '';
 		if(result.length > 0) {
 			name = result[0].name;
 			age = result[0].age;
+			gravatar = md5(result[0].email);
 		} else {
 			console.log('No user with phone number '+phone_number);
 			return callback('No user with phone number '+phone_number);
@@ -29,6 +32,7 @@ exports.add = function (pathToRecording, description, tags, phone_number, timest
 			timestamp: timestamp,
 			user_name: name,
 			user_age: age,
+			user_gravatar: gravatar,
 			completed: false
 		}, function (err, body) {
 			if (err) {
