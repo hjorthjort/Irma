@@ -6,12 +6,12 @@ Irma
 Need help? Irma is all the tech support you need in one phone number.
 ----------------------------------------------------------
 
-Call Irma at **+46 766 86 10 42** (costs like a regular phone call) and explain your issue. We will hand your errand to one of our tech experts who will call you back to solve your problem. Call as many times as you like. We will bill you at the end of the month.
+Call Irma at **+46 766 86 10 42** or **+358 45 739 63 48** (costs like a regular phone call) and explain your issue. We will hand your errand to one of our tech experts who will call you back to solve your problem. Call as many times as you like. We will bill you at the end of the month.
 
 ### How to get your own personal tech support today
 
 1. Go to [www.irma-helps.xyz](http://www.irma-helps.xyz/). Click "Get Started" and register as a new customer.
-1. Call our support number (+46 766 86 10 42) and explain the issue that you want help with.
+1. Call our support number (+46 766 86 10 42 or +358 45 739 63 48) and explain the issue that you want help with.
 1. At the end of the month, you get the bill.
 
 You only have to register once, and you don't need to be online or even at a computer to use Irma. All you need is your phone, just like back in the day.
