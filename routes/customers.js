@@ -77,7 +77,7 @@ router.post('/', function(req, res, next) {
             return res.status(500).json(err);
         }
 
-        res.json(result);
+        res.redirect("profile.html");
     });
 });
 
